@@ -1,0 +1,14 @@
+baseURL: '/'
+languageCode: 'en-us'
+title: "疯狂的茶几"
+theme: docsy
+
+googleAnalytics: G-3TEJLB7B10
+
+# menu: 
+# - main
+
+
+params:
+  copyright: "tomhjx"
+  offlineSearch: true

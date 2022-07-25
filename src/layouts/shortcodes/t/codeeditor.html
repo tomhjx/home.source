@@ -1,0 +1,35 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+{{ $blockID := printf "editorcontainer%d" .Ordinal }}
+{{ $langType := .Get "type" | default "typescript" }}
+
+<div id="{{ $blockID  }}" class="td-box--height-full border w-100" ></div>
+<script src="https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/loader.js"></script>
+<script>
+    $(function(){
+        var blockID = "{{ $blockID  }}";
+        var modeId = '{{ $langType }}';
+        require.config({ paths: { vs: 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+            var editor = monaco.editor.create(document.getElementById(blockID), {
+                language: modeId
+            });
+
+            $.ajax({
+                type: 'GET',
+                url: "https://microsoft.github.io/monaco-editor/index/samples/sample.{{ $langType }}.txt",
+                dataType: 'text',
+                error: function () {
+                    console.log("load "+blockID+"'s sample fail.")
+                }
+            }).done(function (data) {
+                var oldModel = editor.getModel();
+                var newModel = monaco.editor.createModel(data, modeId);
+                editor.setModel(newModel);
+                if (oldModel) {
+                    oldModel.dispose();
+                }
+            });
+
+        });
+    })
+</script>
