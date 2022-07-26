@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  build-toolkit:
+      image: tomhjx/hugo:dev-docsy0.4.0
+      working_dir: /var/www
+      volumes:
+        - ./src/archetypes:/var/www/archetypes
+        - ./src/content:/var/www/content
+        - ./src/config.yaml:/var/www/config.yaml
