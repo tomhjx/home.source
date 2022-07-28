@@ -1,5 +1,5 @@
 ---
 title: "Redis Release Notes"
-linkTitle: "Redis Release Notes"
+linkTitle: "Redis"
 weight: 20
 ---
