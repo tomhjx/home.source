@@ -25,6 +25,7 @@ jobs:
           -v ${{ github.workspace }}/src/archetypes:/var/www/archetypes \
           -v ${{ github.workspace }}/src/content:/var/www/content \
           -v ${{ github.workspace }}/src/static:/var/www/static \
+          -v ${{ github.workspace }}/src/layouts:/var/www/layouts \
           -v ${{ github.workspace }}/src/assets:/var/www/assets \
           tomhjx/hugo:dev-docsy0.4.0 hugo --minify --config config.yaml
       - name: Deploy
