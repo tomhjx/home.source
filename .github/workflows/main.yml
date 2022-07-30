@@ -27,7 +27,7 @@ jobs:
           -v ${{ github.workspace }}/src/static:/var/www/static \
           -v ${{ github.workspace }}/src/layouts:/var/www/layouts \
           -v ${{ github.workspace }}/src/assets:/var/www/assets \
-          tomhjx/hugo:dev-docsy0.4.0 hugo --minify --config config.yaml
+          tomhjx/hugo:dev-docsy hugo --minify --config config.yaml
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
