@@ -1,6 +1,5 @@
 ---
 title: "疯狂的茶几"
-weight: 20
 ---
 
 {{< blocks/cover title="Welcome!" image_anchor="center" height="full" color="primary" >}}
