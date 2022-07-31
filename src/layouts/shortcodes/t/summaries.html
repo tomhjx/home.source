@@ -1,6 +1,6 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $path := .Get "path" | default "." }}
-{{ $col_id := .Get "color" | default .white }}
+{{ $col_id := .Get "color" | default .Ordinal }}
 {{ $height := .Get "height" | default "auto"  }}
 {{ $type   := .Get "type" | default "" }} 
 
