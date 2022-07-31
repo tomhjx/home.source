@@ -1,4 +1,5 @@
-{{ with .Site.GetPage "/blog"}}
+{{ $path := .Get "path" | default "." }}
+{{ with .Site.GetPage $path}}
 <main>
     <article>
         <header>
