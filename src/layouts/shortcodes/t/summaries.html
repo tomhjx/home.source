@@ -1,6 +1,5 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $path := .Get "path" | default "." }}
-{{ $maxlevel := .Get "maxlevel" | default 1 }}
 
 {{ with .Site.GetPage $path}}
 
@@ -17,8 +16,23 @@
             <div class="media-body">
                 <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}  {{ len .Pages }}</a></h5>
                 <p class="mb-2 mb-md-3"><small class="text-muted">{{ .Date.Format "2006-01-02 01:02:03" }} {{ T "ui_in"}} {{ .CurrentSection.LinkTitle }}</small></p>
+
+                {{ if gt (len .Pages) 0 }} 
+
+                    {{ range first 1 .Pages.ByDate.Reverse }}
+
+                    <p class="pt-0 mt-0">{{ .Tile | safeHTML | truncate 250 }}</p>
+                    <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
+    
+                    {{ end }}
+                
+                {{ else }}
+
                 <p class="pt-0 mt-0">{{ .Plain | safeHTML | truncate 250 }}</p>
                 <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
+
+                {{ end }}
+
             </div>
         </li>
         {{ end }}
