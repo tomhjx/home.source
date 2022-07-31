@@ -6,6 +6,8 @@
 
 {{ with .Site.GetPage $path}}
 
+{{ with .GetPage "posts" }}
+
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
     <h4 class="h3">
         {{ .Title }}
@@ -27,5 +29,7 @@
 
     </div>
 </div>
+
+{{ end }}
 
 {{ end }}
