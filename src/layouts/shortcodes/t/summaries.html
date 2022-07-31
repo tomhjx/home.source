@@ -2,18 +2,31 @@
 {{ $path := .Get "path" | default "." }}
 {{ with .Site.GetPage $path}}
 
-<ul class="list-unstyled mt-4">
-    {{ range first 10 .Pages.ByDate }}
-    <li class="media mb-4">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
-            <p class="mb-2 mb-md-3"><small class="text-muted">{{ .Date.Format "2006-01-02 01:02:03" }} {{ T "ui_in"}} {{ .CurrentSection.LinkTitle }}</small></p>
-            {{ partial "featured-image.html" (dict "p" . "w" 250 "h" 125 "class" "float-left mr-3 pt-1 d-none d-md-block") }}
-            <p class="pt-0 mt-0">{{ .Plain | safeHTML | truncate 250 }}</p>
-            <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
-        </div>
-    </li>
-    {{ end }}
-</ul>
+
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+    <h4 class="h3">
+        {{ .Title }}
+    </h4>
+    <div class="mb-0">
+
+    <ul class="list-unstyled mt-4">
+        {{ range first 10 .Pages.ByDate }}
+        <li class="media mb-4">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+                <p class="mb-2 mb-md-3"><small class="text-muted">{{ .Date.Format "2006-01-02 01:02:03" }} {{ T "ui_in"}} {{ .CurrentSection.LinkTitle }}</small></p>
+                {{ partial "featured-image.html" (dict "p" . "w" 250 "h" 125 "class" "float-left mr-3 pt-1 d-none d-md-block") }}
+                <p class="pt-0 mt-0">{{ .Plain | safeHTML | truncate 250 }}</p>
+                <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+
+    </div>
+</div>
+
+
+
 
 {{ end }}
