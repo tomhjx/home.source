@@ -4,7 +4,7 @@
 {{ $height := .Get "height" | default "auto"  }}
 {{ $type   := .Get "type" | default "" }} 
 
-{{ with .Site.GetPage $path "blog" }}
+{{ with .Site.GetPage $path "page" }}
 
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
