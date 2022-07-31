@@ -1,6 +1,6 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $path := .Get "path" | default "." }}
-{{ $spath := .Get "spath" | default "" }}
+{{ $maxlevel := .Get "maxlevel" | default 1 }}
 
 {{ with .Site.GetPage $path}}
 
