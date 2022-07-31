@@ -11,9 +11,11 @@ title: "疯狂的茶几"
 
 {{< /blocks/section >}}
 
+{{< blocks/section >}}
 
-{{< t/summaries  path="/blog" >}}
+{{% t/summaries  path="/blog" %}}
 
 
-{{< t/summaries  path="/releases" >}}
+{{% t/summaries  path="/releases" %}}
+{{< /blocks/section >}}
 
