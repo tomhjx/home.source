@@ -1,8 +1,6 @@
 -----
-title =  "疯狂的茶几"
-
+title: "疯狂的茶几"
 -----
-
 
 {{< t/summaries  path="/blog" >}}
 
