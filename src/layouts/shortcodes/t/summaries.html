@@ -18,9 +18,6 @@
                 <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
                 <p class="mb-2 mb-md-3"><small class="text-muted">{{ .Date.Format "2006-01-02 01:02:03" }} {{ T "ui_in"}} {{ .CurrentSection.LinkTitle }}</small></p>
                 <p class="pt-0 mt-0">{{ .Plain | safeHTML | truncate 250 }}</p>
-                {{ if .IsHome }}
-                    <p class="pt-0 mt-0">is home.</p>
-                {{ end }}
                 <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
             </div>
         </li>
