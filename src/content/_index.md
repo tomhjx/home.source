@@ -2,8 +2,7 @@
 title: "疯狂的茶几"
 ---
 
-Home Page.
-
+{{< blocks/section >}}
 
 {{% blocks/feature %}}
 
@@ -15,3 +14,5 @@ Home Page.
 {{% blocks/feature %}}
 {{< t/summaries  path="/releases" >}}
 {{% /blocks/feature %}}
+
+{{< /blocks/section >}}
