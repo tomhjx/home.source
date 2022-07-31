@@ -1,29 +1,30 @@
 {{ $path := .Get "path" | default "." }}
 {{ with .Site.GetPage $path}}
-<main>
-    <article>
-        <header>
-            <h1>{{.Title}}</h1>
-        </header>
-        <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
-        {{.Content}}
-    </article>
-    
-{{ range first 10 .Pages.ByDate }}
-    <article>
-      <!-- this <div> includes the title summary -->
-      <div>
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        {{ .Summary }}
-      </div>
-      {{ if .Truncated }}
-      <!-- This <div> includes a read more link, but only if the summary is truncated... -->
-      <div>
-        <a href="{{ .RelPermalink }}">Read More…</a>
-      </div>
-      {{ end }}
-    </article>
-{{ end }}
 
-</main>
+<div class="row">
+	<div class="col-12">
+			<h2>{{ T "post_posts_in" }} {{ .Title }}</h2>
+			<ul class="list-unstyled mt-4">
+                {{ range first 10 .Pages.ByDate }}
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">{{ .Date.Format ($.Param "time_format_blog") }} {{ T "ui_in"}} {{ .CurrentSection.LinkTitle }}</small></p>
+						<header class="article-meta">
+							{{ partial "taxonomy_terms_article_wrapper.html" . }}
+							{{ if (and (not .Params.hide_readingtime) (.Site.Params.ui.readingtime.enable)) }}
+								{{ partial "reading-time.html" . }}
+							{{ end }}
+						</header>
+						{{ partial "featured-image.html" (dict "p" . "w" 250 "h" 125 "class" "float-left mr-3 pt-1 d-none d-md-block") }}
+						<p class="pt-0 mt-0">{{ .Plain | safeHTML | truncate 250 }}</p>
+						<p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
+					</div>
+				</li>
+				{{ end }}
+			</ul>
+	</div>
+</div>
+
+
 {{ end }}
