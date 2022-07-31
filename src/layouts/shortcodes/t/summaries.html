@@ -13,7 +13,7 @@
     <div class="mb-0">
 
     <ul class="list-unstyled mt-4">
-        {{ range first 10 .Pages.ByDate }}
+        {{ range first 10 .Pages.ByDate.Reverse }}
         <li class="media mb-4">
             <div class="media-body">
                 <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
