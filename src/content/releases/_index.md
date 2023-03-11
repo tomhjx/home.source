@@ -1,6 +1,6 @@
 ---
-title: "Release Notes"
-linkTitle: "Release Notes"
+title: "Release News"
+linkTitle: "Release News"
 weight: 20
 menu:
   main:
@@ -9,4 +9,4 @@ cascade:
 - type: "blog"
 ---
 
-This is Release Notes
+The Release News
