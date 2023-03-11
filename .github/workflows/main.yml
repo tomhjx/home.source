@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build
         run: |
-          docker run \
+          docker run -e TZ=Asia/Shanghai \
           -v ${{ github.workspace }}/public:/var/www/public \
           -v ${{ github.workspace }}/src/config.yaml:/var/www/config.yaml \
           -v ${{ github.workspace }}/src/archetypes:/var/www/archetypes \
