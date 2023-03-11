@@ -2,6 +2,10 @@
 {{ $blockID := printf "editorcontainer%d" .Ordinal }}
 {{ $langType := .Get "type" | default "typescript" }}
 
+<script>
+    var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
+</script>
+
 <div id="{{ $blockID  }}" class="td-box--height-full border w-100" ></div>
 <script src="/lib/monaco-editor/min/vs/loader.js"></script>
 <script src="/lib/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
@@ -11,7 +15,6 @@
     $(function(){
         var blockID = "{{ $blockID  }}";
         var modeId = '{{ $langType }}';
-        require.config({ paths: { vs: '/lib/monaco-editor/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             var editor = monaco.editor.create(document.getElementById(blockID), {
                 language: modeId
