@@ -4,19 +4,19 @@ description="Rich IntelliSense, Validation for Go."
 +++
 
 <link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
-
 <script>
     var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
 </script>
-
-<div class="btn-group" role="group">
-    <button class="btn btn-outline-primary btn-sm" id="run" >Run</button>
-</div>
-
-<div id="input" class="border w-100 h-80" ></div>
 <script src="/lib/monaco-editor/min/vs/loader.js"></script>
 <script src="/lib/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
 <script src="/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
+
+<div class="btn-group p-2" role="group">
+    <button class="btn btn-outline-primary btn-sm" id="run" >Run</button>
+</div>
+<div id="input" class="border w-100 p-2" style="height: 500px;" ></div>
+
+<div id="output" class="w-100 p-2" style="height: 200px;"></div>
 
 <script>
     $(function(){
