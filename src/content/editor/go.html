@@ -17,7 +17,7 @@ description="Rich IntelliSense, Validation for Go."
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <button class="btn btn-outline-primary btn-sm" id="run" >Run</button>
+    <button class="btn btn-outline-primary btn-sm" id="runBtn" >Run</button>
 </div>
 <div id="input" class="border w-100 p-2" style="height: 500px;" ></div>
 
@@ -46,6 +46,18 @@ description="Rich IntelliSense, Validation for Go."
             if (oldModel) {
                 oldModel.dispose();
             }
+        });
+
+
+        $('#runBtn').click(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'https://go.dev/_/compile',
+                data: {
+                    version: 2,
+                    body: editor.getModel().getValue()
+                }
+            })
         });
 
 
