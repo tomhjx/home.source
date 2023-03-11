@@ -12,7 +12,7 @@
         var blockID = "{{ $blockID  }}";
         var modeId = '{{ $langType }}';
         require.config({ paths: { vs: '/lib/monaco-editor/min/vs' } });
-        require([], function () {
+        require(['vs/editor/editor.main'], function () {
             var editor = monaco.editor.create(document.getElementById(blockID), {
                 language: modeId
             });
