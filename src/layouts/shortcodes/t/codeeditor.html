@@ -17,8 +17,31 @@
     $(function(){
         var blockID = "{{ $blockID  }}";
         var modeId = '{{ $langType }}';
-        require(['vs/editor/editor.main'], function () {
-            var editor = monaco.editor.create(document.getElementById(blockID), {
+
+        // require(['vs/editor/editor.main'], function () {
+        //     var editor = monaco.editor.create(document.getElementById(blockID), {
+        //         language: modeId
+        //     });
+
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: "/resource/editor/example/{{ $langType }}.txt",
+        //         dataType: 'text',
+        //         error: function () {
+        //             console.log("load "+blockID+"'s sample fail.")
+        //         }
+        //     }).done(function (data) {
+        //         var oldModel = editor.getModel();
+        //         var newModel = monaco.editor.createModel(data, modeId);
+        //         editor.setModel(newModel);
+        //         if (oldModel) {
+        //             oldModel.dispose();
+        //         }
+        //     });
+
+        // });
+
+        var editor = monaco.editor.create(document.getElementById(blockID), {
                 language: modeId
             });
 
@@ -38,6 +61,7 @@
                 }
             });
 
-        });
+
+
     })
 </script>
