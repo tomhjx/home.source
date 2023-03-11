@@ -3,12 +3,12 @@
 {{ $langType := .Get "type" | default "typescript" }}
 
 <div id="{{ $blockID  }}" class="td-box--height-full border w-100" ></div>
-<script src="/static/lib/monaco-editor/min/vs/loader.js"></script>
+<script src="/lib/monaco-editor/min/vs/loader.js"></script>
 <script>
     $(function(){
         var blockID = "{{ $blockID  }}";
         var modeId = '{{ $langType }}';
-        require.config({ paths: { vs: '/static/lib/monaco-editor/min/vs' } });
+        require.config({ paths: { vs: '/lib/monaco-editor/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             var editor = monaco.editor.create(document.getElementById(blockID), {
                 language: modeId
@@ -16,7 +16,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: "/data/editor/example/{{ $langType }}.txt",
+                url: "/resource/editor/example/{{ $langType }}.txt",
                 dataType: 'text',
                 error: function () {
                     console.log("load "+blockID+"'s sample fail.")
