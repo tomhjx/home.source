@@ -2,6 +2,8 @@
 {{ $blockID := printf "editorcontainer%d" .Ordinal }}
 {{ $langType := .Get "type" | default "typescript" }}
 
+<link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
+
 <script>
     var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
 </script>
