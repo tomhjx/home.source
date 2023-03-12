@@ -6,7 +6,7 @@ title: "疯狂的茶几"
 
 {{< t/section color="white" >}}
 
-{{< t/summaries  path="/editor" >}}
+{{< t/descs  path="/editor" >}}
 
 {{< t/summaries  path="/releases" >}}
 
