@@ -2,8 +2,8 @@
 {{ $blockID := printf "editorcontainer%d" .Ordinal }}
 {{ $langType := .Get "lang" | default "typescript" }}
 {{ $htmlStyle := .Get "style" | default "height: 500px;" }}
-{{ $css := .Get "css" | default "border w-100 p-2" }}
-<div id="editor" class="{{ $css }}" style="{{ $htmlStyle }}" ></div>
+{{ $htmlCss := .Get "css" | default "border w-100 p-2" }}
+<div id="editor" class="{{ $htmlCss }}" style="{{ $htmlStyle }}" ></div>
 <link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
 <script>
     var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
