@@ -11,10 +11,6 @@ description="Side by side live comparison"
         require(['vs/editor/editor.main'], function () {
 
             editor = monaco.editor.createDiffEditor(document.getElementById('editorcontainer0'));
-            editor.setModel({
-                original: monaco.editor.createModel('', 'javascript'),
-                modified: monaco.editor.createModel('', 'javascript')
-            });
         });
 
     });
