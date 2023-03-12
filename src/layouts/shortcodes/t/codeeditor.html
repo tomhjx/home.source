@@ -3,7 +3,7 @@
 {{ $langType := .Get "lang" | default "typescript" }}
 {{ $style := .Get "style" | safeCSS| default "" }}
 {{ $css := .Get "css" | default "td-box--height-full border w-100" }}
-<div id="editor" class="{{ $css }}" style="{{ $style }}" ></div>
+<div id="{{ $blockID }}" class="{{ $css }}" style="{{ $style }}" ></div>
 <link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
 <script>
     var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
@@ -16,7 +16,7 @@
 <script>
     $(function(){
         var modeId = '{{ $langType }}';
-        editor = monaco.editor.create(document.getElementById('editor'), {
+        editor = monaco.editor.create(document.getElementById('{{ $blockID }}'), {
                 language: modeId
             });
 
