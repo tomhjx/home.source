@@ -1,7 +1,7 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $blockID := printf "editorcontainer%d" .Ordinal }}
 {{ $style := .Get "style" | safeCSS| default "" }}
-{{ $css := .Get "css" | default "border w-100 p-2" }}
+{{ $css := .Get "css" | default "border w-100" }}
 <div id="{{ $blockID }}" class="{{ $css }}" style="{{ $style }}" ></div>
 <link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
 <script>
