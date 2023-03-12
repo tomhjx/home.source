@@ -1,6 +1,6 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $blockID := printf "editorcontainer%d" .Ordinal }}
-{{ $langType := .Get "type" | default "typescript" }}
+{{ $langType := .Get "lang" | default "typescript" }}
 {{ $style := .Get "style" | default "" }}
 {{ $css := .Get "css" | default "border w-100 p-2" }}
 <div id="editor" class="{{ $css }}" style="{{ $style }}" ></div>
