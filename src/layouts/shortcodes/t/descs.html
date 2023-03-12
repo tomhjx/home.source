@@ -13,7 +13,7 @@
     <ul class="list-unstyled mt-4">
         {{ range first 3 .Pages.ByDate.Reverse }}
         <li class="media mb-4">
-            <div class="media-body">
+            <div class="media-body text-left">
 
                 {{ if gt (len .Pages) 0 }} 
 
@@ -21,7 +21,7 @@
 
                     <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
                     <p class="pt-0 mt-0">{{ .Params.description | markdownify }}</p>
-                    <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
+                    <p class="pt-0 text-right"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
 
                     {{ end }}
                 
@@ -29,7 +29,7 @@
 
                 <h5 class="mt-0 mb-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
                 <p class="pt-0 mt-0">{{ .Params.description | markdownify }}</p>
-                <p class="pt-0"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
+                <p class="pt-0 text-right"><a href="{{ .RelPermalink }}" aria-label="{{ T "ui_read_more"}} - {{ .LinkTitle }}">{{ T "ui_read_more"}}</a></p>
 
                 {{ end }}
 
