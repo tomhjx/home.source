@@ -17,7 +17,8 @@
     $(function(){
         var modeId = '{{ $langType }}';
         editor = monaco.editor.create(document.getElementById('{{ $blockID }}'), {
-                language: modeId
+                language: modeId,
+                automaticLayout: true
             });
 
         // init
