@@ -1,0 +1,13 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+{{ $blockID := printf "editorcontainer%d" .Ordinal }}
+{{ $style := .Get "style" | default "" }}
+{{ $css := .Get "css" | default "border w-100 p-2" }}
+<div id="editor" class="{{ $css }}" style="{{ $style }}" ></div>
+<link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
+<script>
+    var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
+    var editor;
+</script>
+<script src="/lib/monaco-editor/min/vs/loader.js"></script>
+<script src="/lib/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+<script src="/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
