@@ -1,6 +1,13 @@
 +++
 title="Diff"
 description="Side by side live comparison. Supports all languages out of the box."
+date="2022-01-21T10:19:14Z"
 +++
 
-<div id="editor" class="border w-100 p-2" style="height: 500px;" ></div>
+{{<  t/codeeditor css="td-box--height-full border w-100" >}}
+
+<script>
+    $(function(){
+        editor = monaco.editor.createDiffEditor(document.getElementById('editor'));
+    });
+</script>
