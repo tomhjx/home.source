@@ -3,14 +3,6 @@ title="Go"
 description="Rich IntelliSense, Validation for Go."
 +++
 
-<link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
-<script>
-    var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
-</script>
-<script src="/lib/monaco-editor/min/vs/loader.js"></script>
-<script src="/lib/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
-<script src="/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
-
 <div class="row p-2">
     <div class="col-auto" >
         <select class="form-select" aria-label="Default select example">
@@ -23,36 +15,12 @@ description="Rich IntelliSense, Validation for Go."
         <button class="btn btn-outline-primary btn-sm" id="runBtn" >Run</button>
     </div>
 </div>
-<div id="input" class="border w-100 p-2" style="height: 500px;" ></div>
+{{<  t/codeeditor type="go" style="height: 500px;" >}}
 
 <div id="output" class="w-100 p-2" data-bs-theme="dark" style="height: 200px;"></div>
 
 <script>
     $(function(){
-        var modeId = 'go';
-        
-        var editor = monaco.editor.create(document.getElementById('input'), {
-                language: modeId
-            });
-
-        // init
-        $.ajax({
-            type: 'GET',
-            url: "/resource/editor/example/go.txt",
-            dataType: 'text',
-            error: function () {
-                console.log("load "+blockID+"'s sample fail.")
-            }
-        }).done(function (data) {
-            var oldModel = editor.getModel();
-            var newModel = monaco.editor.createModel(data, modeId);
-            editor.setModel(newModel);
-            if (oldModel) {
-                oldModel.dispose();
-            }
-        });
-
-
         $('#runBtn').click(function(){
             $.ajax({
                 type: 'POST',
@@ -63,7 +31,5 @@ description="Rich IntelliSense, Validation for Go."
                 }
             })
         });
-
-
     })
 </script>

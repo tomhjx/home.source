@@ -1,34 +1,32 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $blockID := printf "editorcontainer%d" .Ordinal }}
 {{ $langType := .Get "type" | default "typescript" }}
-
+{{ $style := .Get "style" | default "" }}
+{{ $css := .Get "css" | default "border w-100 p-2" }}
+<div id="editor" class="{{ $css }}" style="{{ $style }}" ></div>
 <link rel="stylesheet" data-name="vs/editor/editor.main" href="/lib/monaco-editor/min/vs/editor/editor.main.css" />
-
 <script>
     var require = { paths: { vs: '/lib/monaco-editor/min/vs' } };
+    var editor;
 </script>
-
-<div id="{{ $blockID  }}" class="td-box--height-full border w-100" ></div>
 <script src="/lib/monaco-editor/min/vs/loader.js"></script>
 <script src="/lib/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
 <script src="/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
 
 <script>
     $(function(){
-        var blockID = "{{ $blockID  }}";
         var modeId = '{{ $langType }}';
-        
-        var editor = monaco.editor.create(document.getElementById(blockID), {
+        editor = monaco.editor.create(document.getElementById('editor'), {
                 language: modeId
             });
 
         // init
         $.ajax({
             type: 'GET',
-            url: "/resource/editor/example/{{ $langType }}.txt",
+            url: "/resource/editor/example/"+modeId+".txt",
             dataType: 'text',
             error: function () {
-                console.log("load "+blockID+"'s sample fail.")
+                console.log("load "+modeId+" sample fail.")
             }
         }).done(function (data) {
             var oldModel = editor.getModel();
@@ -38,8 +36,5 @@
                 oldModel.dispose();
             }
         });
-
-
-
     })
 </script>
