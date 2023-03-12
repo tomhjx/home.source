@@ -10,7 +10,10 @@ description="Side by side live comparison"
 
         require(['vs/editor/editor.main'], function () {
 
-            editor = monaco.editor.createDiffEditor(document.getElementById('editorcontainer0'), {readOnly:false});
+            editor = monaco.editor.createDiffEditor(document.getElementById('editorcontainer0'), {
+                originalEditable: true,
+                readOnly:false
+            });
             editor.setModel({
                 original: monaco.editor.createModel('a', 'text/plain'),
                 modified: monaco.editor.createModel('b', 'text/plain')
