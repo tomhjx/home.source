@@ -8,7 +8,5 @@ title: "疯狂的茶几"
 
 {{< t/descs  path="/editor" >}}
 
-{{< t/summaries  path="/releases" >}}
-
 {{</ t/section >}}
 
