@@ -27,8 +27,12 @@ description = "Online Editor, Preview for Markdown Mermaid."
 
 <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.parseError = function (err, hash) {
+                console.error('Mermaid error: ', err);
+        };
+        mermaid.initialize({ startOnLoad: true });
+
         $(function () {
-                mermaid.initialize({ startOnLoad: false });
 
                 var input = $('#input');
                 var output = $('#output');
@@ -69,7 +73,7 @@ description = "Online Editor, Preview for Markdown Mermaid."
                                 output.html(svgCode);
                                 console.log(svgCode);
                                 svg = output.find('svg')[0];
-                                var svgData = new XMLSerializer().serializeToString(svg.node());
+                                var svgData = new XMLSerializer().serializeToString(svg);
                                 var svgDataBase64 = btoa(unescape(encodeURIComponent(svgData)))
                                 svgDataUrl = `data:image/svg+xml;charset=utf-8;base64,${svgDataBase64}`
                                 img.src = svgDataUrl
