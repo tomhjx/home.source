@@ -63,7 +63,7 @@ $(function(){
   }
 
   function renderMermaid() {
-          mermaid.mermaidAPI.render('theGraph', input.val(), function(svgCode) {
+          mermaid.render.render('theGraph', input.val(), function(svgCode) {
                   output.html(svgCode);
                   svg = output.find('svg')[0];
                   var svgData = new XMLSerializer().serializeToString(svg);
