@@ -4,4 +4,4 @@ description: >
     Rich IntelliSense, Validation for LESS.
 ---
 
-{{<  t/codeeditor type="less" >}}
+{{<  t/codeeditor lang="less" >}}

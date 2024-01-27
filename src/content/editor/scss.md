@@ -4,4 +4,4 @@ description: >
     Rich IntelliSense, Validation for SCSS.
 ---
 
-{{<  t/codeeditor type="scss" >}}
+{{<  t/codeeditor lang="scss" >}}

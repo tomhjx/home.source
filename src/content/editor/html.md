@@ -4,4 +4,4 @@ description: >
     Rich IntelliSense, Validation for HTML.
 ---
 
-{{<  t/codeeditor type="html" >}}
+{{<  t/codeeditor lang="html" >}}
