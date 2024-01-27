@@ -62,9 +62,8 @@ $(function(){
           return canvas;
   }
 
-  function renderMermaid() {
-         const {svg, bindFunctions} = await 
-         mermaid.render('theGraph', input.val(), function(svgCode) {
+  async function renderMermaid() {
+         const {svg, bindFunctions} = await mermaid.render('theGraph', input.val(), function(svgCode) {
                   output.html(svgCode);
                   svg = output.find('svg')[0];
                   var svgData = new XMLSerializer().serializeToString(svg);
