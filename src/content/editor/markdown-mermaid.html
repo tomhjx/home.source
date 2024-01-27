@@ -68,7 +68,7 @@ description = "Online Editor, Preview for Markdown Mermaid."
                         mermaid.render('theGraph', input.val()).then(({ svgCode, bindFunctions }) => {
                                 output.html(svgCode);
                                 svg = output.find('svg')[0];
-                                var svgData = new XMLSerializer().serializeToString(svg);
+                                var svgData = new XMLSerializer().serializeToString(svg.node());
                                 var svgDataBase64 = btoa(unescape(encodeURIComponent(svgData)))
                                 svgDataUrl = `data:image/svg+xml;charset=utf-8;base64,${svgDataBase64}`
                                 img.src = svgDataUrl
