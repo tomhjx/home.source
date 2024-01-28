@@ -84,6 +84,8 @@ description = "Online Editor, Preview for Markdown Mermaid."
                                 // console.log("svg.getBBox.height="+svg.getBBox().height)
                                 img.width = svg.getBBox().width
                                 img.height = svg.getBBox().height
+                        }).catch((error) => {
+                                console.error(error);
                         });
                 }
 
