@@ -1,7 +1,8 @@
 {{ $src := .Get "src" | default "about:blank" }}
 {{ $title := .Get "title" | default "" }}
 {{ $height := .Get "height" | default "150" }}
-<iframe width="100%" height="{{ $height }}" name="iframe" src="{{ $src }}" frameborder="0" scrolling="no" >
+{{ $scrolling := .Get "scrolling" | default "no" }}
+<iframe width="100%" height="{{ $height }}" name="iframe" src="{{ $src }}" frameborder="0" scrolling="{{ $scrolling }}" >
 </iframe>
 
 <br />
