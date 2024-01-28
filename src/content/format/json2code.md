@@ -1,5 +1,5 @@
 ---
-title: "JSON to Code With Quicktype"
+title: "JSON to Code"
 description: >
     Convert JSON into gorgeous, typesafe code in any language.
 ---
