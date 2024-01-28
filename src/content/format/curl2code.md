@@ -4,4 +4,4 @@ description: >
     Convert curl commands to Python, JavaScript and more.
 ---
 
-{{< t/embeddedpage title="curlconverter" src="https://curlconverter.com/" >}}
+{{< t/embeddedpage title="curlconverter" src="https://curlconverter.com/" height=500 >}}

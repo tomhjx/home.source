@@ -4,4 +4,4 @@ description: >
     Convert JSON into gorgeous, typesafe code in any language.
 ---
 
-{{< t/embeddedpage title="Quicktype" src="https://app.quicktype.io/" >}}
+{{< t/embeddedpage title="Quicktype" src="https://app.quicktype.io/" height=800 >}}
