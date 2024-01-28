@@ -1,4 +1,5 @@
 {{ $src := .Get "src" | default "about:blank" }}
+{{ $title := .Get "title" | default "" }}
 <script>
     function resizeIframe(obj) {
       obj.style.height =  1.05*obj.contentWindow.document.body.scrollHeight + 'px';
@@ -9,3 +10,7 @@
     scrolling="no" 
     onload="resizeIframe(this)">
 </iframe>
+
+<br />
+
+To learn more about <a href="{{ $src }}">{{ $title }}</a>
