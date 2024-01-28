@@ -70,7 +70,7 @@ description = "Online Editor, Preview for Markdown Mermaid."
 
                 function renderMermaid() {
                         console.log(input.val());
-                        mermaid.render('theGraph', input.val()).then(({ svgCode, bindFunctions }) => {
+                        mermaid.render('theGraph', input.val()).then(({ svgCode }) => {
                                 output.html(svgCode);
                                 console.log(svgCode);
                                 svg = output.find('svg')[0];
