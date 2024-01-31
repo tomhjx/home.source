@@ -1,5 +1,5 @@
 ---
-title: "Go Playground"
+title: "Golang Playground"
 description: >
     Test your Golang online with code editor.
 ---
