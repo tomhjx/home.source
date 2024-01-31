@@ -1,7 +1,7 @@
 ---
 title: "SQL Playground"
 description: >
-    Test your SQL online with code editor.
+    Test your SQL online.Support SQL Server,SQLite,PostgreSQL,MySQL,MariaDB.
 ---
 
-{{< t/embeddedpage title="sqlfiddle" src="https://sqlfiddle.com/" height=1200 scrolling="yes" >}}
+{{< t/embeddedpage title="SQL Fiddle" src="https://sqlfiddle.com/" height=1200 scrolling="yes" >}}
