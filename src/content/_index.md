@@ -8,7 +8,7 @@ title: "疯狂的茶几"
 
 {{< t/descs  path="/playground" >}}
 {{< t/descs  path="/editor" >}}
-{{< t/descs  path="/format" >}}
+{{< t/descs  path="/transform" >}}
 
 {{</ t/section >}}
 
