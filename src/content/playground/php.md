@@ -4,4 +4,4 @@ description: >
     Test your PHP online with code editor.
 ---
 
-{{< t/embeddedpage title="Teh Playgound" src="https://www.tehplayground.com" height=1200 >}}
+{{< t/embeddedpage title="phplayground" src="https://www.phplayground.com/" height=1200 >}}
