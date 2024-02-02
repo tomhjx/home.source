@@ -1,5 +1,5 @@
 ---
-title: "Markdown Mermaid"
+title: "Markdown Mermaid Online Editor"
 description: >
     Online Editor, Preview for Markdown Mermaid.
 ---
