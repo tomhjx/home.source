@@ -3,7 +3,7 @@
 {{ $height := .Get "height" | default "100%" }}
 {{ $width := .Get "width" | default "100%" }}
 {{ $scrolling := .Get "scrolling" | default "no" }}
-<iframe width="{{ $width }}" height="{{ $height }}" name="iframe" src="{{ $src }}" frameborder="0" scrolling="{{ $scrolling }}" >
+<iframe allowfullscreen="true" width="{{ $width }}" height="{{ $height }}" name="iframe" src="{{ $src }}" frameborder="0" scrolling="{{ $scrolling }}" >
 </iframe>
 
 <br />
