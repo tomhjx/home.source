@@ -4,4 +4,4 @@ description: >
     Run FreeDOS	x86 Operating System in your browser!
 ---
 
-{{< t/embeddedpage title="JS/Linux" src="https://bellard.org/jslinux/vm.html?url=freedos.cfg&mem=64&graphic=1&w=1024&h=768" height=800 >}}
+{{< t/embeddedpage title="JS/Linux" src="https://bellard.org/jslinux/vm.html?url=freedos.cfg&mem=64&graphic=1&w=1024&h=768" height=1200 >}}
