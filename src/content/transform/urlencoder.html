@@ -7,6 +7,8 @@ description="Use the online tool from above to either encode or decode a string 
     <div class="row">
             <div class="col p-2">
                     <div class="btn-group" role="group">
+                            <button class="btn btn-outline-primary btn-sm" id="encodestr">Encode string</button>
+                            <button class="btn btn-outline-primary btn-sm" id="decodestr">Decode string</button>
                             <button class="btn btn-outline-primary btn-sm" id="encodeurl">Encode url</button>
                             <button class="btn btn-outline-primary btn-sm" id="decodeurl">Decode url</button>
                     </div>
@@ -21,3 +23,20 @@ description="Use the online tool from above to either encode or decode a string 
             </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+        $('#encodestr').click(function(){
+            $('#output').val(encodeURIComponent($('#input').val()));
+        });
+        $('#decodestr').click(function(){
+            $('#output').val(decodeURIComponent($('#input').val()));
+        });
+        $('#encodeurl').click(function(){
+            $('#output').val(encodeURI($('#input').val()));
+        });
+        $('#decodeurl').click(function(){
+            $('#output').val(decodeURI($('#input').val()));
+        });
+    });
+</script>
