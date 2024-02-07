@@ -4,15 +4,11 @@ description="Encode image using Base64 encoding format"
 +++
 
 <div class="container-fluid">
-    <div class="row">
-            <div class="col p-2">
-                <input class="form-control"  type="file" id="input" accept="image/*" />
-            </div>
+    <div class="row mb-3">
+        <input class="form-control"  type="file" id="input" accept="image/*" />
     </div>
-    <div class="row">
-            <div  class="col-md-6">
-                <textarea id="output" class="form-control" style="height: 300px;" disabled placeholder="Your results will appear here."></textarea>
-            </div>
+    <div class="row mb-3">
+        <textarea id="output" class="form-control" style="height: 300px;" disabled placeholder="Your results will appear here."></textarea>
     </div>
 </div>
 
@@ -23,8 +19,7 @@ description="Encode image using Base64 encoding format"
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    var base64Image = e.target.result;
-                    $("#output").val(base64Image);
+                    $("#output").val(e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
