@@ -1,6 +1,6 @@
 +++
-title = "URL Encode and Decode"
-description="Use the online tool from above to either encode or decode a string of text. For worldwide interoperability, URIs have to be encoded uniformly."
+title = "Base64 Encode and Decode"
+description="Encode and Decode Base64 data with this online base64 encoder."
 +++
 
 <div class="container-fluid">
@@ -8,8 +8,6 @@ description="Use the online tool from above to either encode or decode a string 
             <div class="col p-2">
                 <button class="btn btn-outline-primary btn-sm" id="encodestr">Encode a string</button>
                 <button class="btn btn-outline-primary btn-sm" id="decodestr">Decode a string</button>
-                <button class="btn btn-outline-primary btn-sm" id="encodeurl">Encode a full URI</button>
-                <button class="btn btn-outline-primary btn-sm" id="decodeurl">Decode a full URI</button>
             </div>
     </div>
     <div class="row">
@@ -25,16 +23,12 @@ description="Use the online tool from above to either encode or decode a string 
 <script>
     $(function(){
         $('#encodestr').click(function(){
-            $('#output').val(encodeURIComponent($('#input').val()));
+            str = $('#input').val();
+            $('#output').val(btoa(unescape(encodeURIComponent(str))));
         });
         $('#decodestr').click(function(){
-            $('#output').val(decodeURIComponent($('#input').val()));
-        });
-        $('#encodeurl').click(function(){
-            $('#output').val(encodeURI($('#input').val()));
-        });
-        $('#decodeurl').click(function(){
-            $('#output').val(decodeURI($('#input').val()));
+            str = $('#input').val();
+            $('#output').val(decodeURIComponent(escape(atob(str))));
         });
     });
 </script>
