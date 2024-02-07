@@ -1,0 +1,33 @@
++++
+title = "Image to Base64"
+description="Encode image using Base64 encoding format"
++++
+
+<div class="container-fluid">
+    <div class="row">
+            <div class="col p-2">
+                <input class="form-control"  type="file" id="input" accept="image/*" />
+            </div>
+    </div>
+    <div class="row">
+            <div  class="col-md-6">
+                <textarea id="output" class="form-control" style="height: 300px;" disabled placeholder="Your results will appear here."></textarea>
+            </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $('#input').change(function(){
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var base64Image = e.target.result;
+                    $("#output").val(base64Image);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+    });
+</script>
