@@ -46,7 +46,7 @@ description="Create Image Placeholder."
     </div>
 
     <div class="mb-3 row">
-        <canvas id="placeholder" ></canvas>
+        <img id="preview" class="img-fluid" />
     </div>
 </div>
 
@@ -55,12 +55,13 @@ description="Create Image Placeholder."
         var wInput = $('#wInput');
         var hInput = $('#hInput');
         var textInput = $('#textInput');
-        var placeholder = $('#placeholder');
+        var placeholder = $('<canvas>')
         var bgColorInput = $('#bgColorInput');
         var txtColorInput = $('#txtColorInput');
+        var preview = $('#preview');
 
         function createPlaceholder(width, height, bgColor, textColor, text) {
-            const canvas = document.getElementById("placeholder");
+            const canvas = placeholder.get(0);
             
             if (canvas.getContext) {
                 const ctx = canvas.getContext("2d");
@@ -82,6 +83,8 @@ description="Create Image Placeholder."
 
                 // 绘制文本
                 ctx.fillText(text, width / 2, height / 2);
+
+                preview.attr('src', canvas.toDataURL("image/png"));
             }
         }
 
