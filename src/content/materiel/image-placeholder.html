@@ -71,19 +71,23 @@ description="Create Image Placeholder."
     </div> -->
 
     <div class="mb-3 row">
-        <div class="col-sm">
-            <div class="input-group mb-3">
-                <span class="input-group-text">Width</span>
-                <input type="text" class="form-control" >
-                <span class="input-group-text">px</span>
-            </div>
+        <div class="col-sm input-group">
+            <span class="input-group-text">Width</span>
+            <input type="text" class="form-control" >
+            <span class="input-group-text">px</span>
         </div>
         
-        <div class="col-sm input-group mb-3">
+        <div class="col-sm input-group">
             <span class="input-group-text">High</span>
             <input type="text" class="form-control" >
             <span class="input-group-text">px</span>
         </div>
+
+        <div class="col-sm input-group">
+            <span class="input-group-text">Color</span>
+            <input type="color" class="form-control form-control-color" id="colorInput" value="#563d7c" title="Choose your color">
+        </div>
+
     </div>
     <div class="mb-3 row">
         <canvas id="placeholder" width="300" height="200"></canvas>
