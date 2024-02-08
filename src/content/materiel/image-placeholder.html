@@ -66,6 +66,22 @@ description="Create Image Placeholder."
                 const ctx = canvas.getContext("2d");
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                canvas.width = 800;
+                canvas.height = 600;
+
+                const aspectRatio = width / height;
+
+                if (aspectRatio > 1) {
+                    // 图片宽度大于高度
+                    width = thumbnailWidth;
+                    height = thumbnailHeight / aspectRatio;
+                } else {
+                    // 图片高度大于等于宽度
+                    width = thumbnailWidth * aspectRatio;
+                    height = thumbnailHeight;
+                }
+
                 
                 // 设置背景颜色
                 ctx.fillStyle = bgColor;
@@ -89,8 +105,6 @@ description="Create Image Placeholder."
                 txt = wInput.val()+'x'+hInput.val();
             }
 
-            placeholder.width(wInput.val());
-            placeholder.height(hInput.val());
             createPlaceholder(wInput.val(), hInput.val(), bgColorInput.val(), txtColorInput.val(), txt);
         }
 
