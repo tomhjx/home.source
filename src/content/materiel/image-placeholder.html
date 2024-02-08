@@ -4,15 +4,14 @@ description="Create Image Placeholder."
 +++
 
 <div class="container-fluid">
-    <!-- <div class="row">
-            <div class="col p-2">
-                <button class="btn btn-outline-primary btn-sm" id="encodestr">Encode a string</button>
-                <button class="btn btn-outline-primary btn-sm" id="decodestr">Decode a string</button>
-                <button class="btn btn-outline-primary btn-sm" id="encodeurl">Encode a full URI</button>
-                <button class="btn btn-outline-primary btn-sm" id="decodeurl">Decode a full URI</button>
-            </div>
-    </div> -->
-    <div class="row">
+    
+    <div class="mb-3 row">
+        <label for="colorInput" class="col-form-label">Color</label>
+        <div class="col-sm-10">
+            <input type="color" class="form-control form-control-color" id="colorInput" value="#563d7c" title="Choose your color">
+        </div>
+    </div>
+    <div class="mb-3 row">
         <canvas id="placeholder" width="300" height="200"></canvas>
     </div>
 </div>
