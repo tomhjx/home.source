@@ -8,24 +8,24 @@ description="Create Image Placeholder."
     <div class="mb-3 row">
         <div class="col-sm input-group">
             <span class="input-group-text">Width</span>
-            <input type="text" class="form-control" >
+            <input type="text" class="form-control" id="wInput" value="300" >
             <span class="input-group-text">px</span>
         </div>
         
         <div class="col-sm input-group">
             <span class="input-group-text">High</span>
-            <input type="text" class="form-control" >
+            <input type="text" class="form-control" id="hInput" value="200" >
             <span class="input-group-text">px</span>
         </div>
 
         <div class="col-sm input-group">
             <span class="input-group-text">Background Color</span>
-            <input type="color" class="form-control form-control-color" id="bgColorInput" value="#563d7c" title="Choose your color">
+            <input type="color" class="form-control form-control-color" id="bgColorInput" value="#cccccc" title="Choose your color">
         </div>
 
         <div class="col-sm input-group">
             <span class="input-group-text">Text Color</span>
-            <input type="color" class="form-control form-control-color" id="txtColorInput" value="#563d7c" title="Choose your color">
+            <input type="color" class="form-control form-control-color" id="txtColorInput" value="#000000" title="Choose your color">
         </div>
 
     </div>
@@ -52,6 +52,14 @@ description="Create Image Placeholder."
 
 <script>
     $(function(){
+        var wInput = $('#wInput');
+        var hInput = $('#hInput');
+        var textInput = $('#textInput');
+        var placeholder = $('#placeholder');
+        var bgColorInput = $('#bgColorInput');
+        var txtColorInput = $('#txtColorInput');
+
+        textInput.val(wInput.val()+'x'+hInput.val());
 
         function createPlaceholder(width, height, bgColor, textColor, text) {
             const canvas = document.getElementById("placeholder");
@@ -76,6 +84,14 @@ description="Create Image Placeholder."
 
         // 示例用法：
         createPlaceholder(300, 200, "#cccccc", "#000000", "300x200");
+
+        function reset() {
+            placeholder.width(wInput.val());
+            placeholder.width(hInput.val());
+            createPlaceholder(wInput.val(), hInput.val(), bgColorInput.val(), txtColorInput.val(), textInput.val());
+        }
+
+        $('#generate').click(reset);
 
     });
 </script>
