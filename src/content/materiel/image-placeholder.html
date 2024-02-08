@@ -1,0 +1,48 @@
++++
+title = "Image Placeholder"
+description="Create Image Placeholder."
++++
+
+<div class="container-fluid">
+    <!-- <div class="row">
+            <div class="col p-2">
+                <button class="btn btn-outline-primary btn-sm" id="encodestr">Encode a string</button>
+                <button class="btn btn-outline-primary btn-sm" id="decodestr">Decode a string</button>
+                <button class="btn btn-outline-primary btn-sm" id="encodeurl">Encode a full URI</button>
+                <button class="btn btn-outline-primary btn-sm" id="decodeurl">Decode a full URI</button>
+            </div>
+    </div> -->
+    <div class="row">
+        <canvas id="placeholder" width="300" height="200"></canvas>
+    </div>
+</div>
+
+<script>
+    $(function(){
+
+        function createPlaceholder(width, height, bgColor, textColor, text) {
+            const canvas = document.getElementById("placeholder");
+            
+            if (canvas.getContext) {
+                const ctx = canvas.getContext("2d");
+                
+                // 设置背景颜色
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, width, height);
+
+                // 设置文本样式
+                ctx.font = "bold 24px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillStyle = textColor;
+
+                // 绘制文本
+                ctx.fillText(text, width / 2, height / 2);
+            }
+        }
+
+        // 示例用法：
+        createPlaceholder(300, 200, "#cccccc", "#000000", "300x200");
+
+    });
+</script>
