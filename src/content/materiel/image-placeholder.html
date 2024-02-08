@@ -82,9 +82,6 @@ description="Create Image Placeholder."
             }
         }
 
-        // 示例用法：
-        createPlaceholder(300, 200, "#cccccc", "#000000", "300x200");
-
         function reset() {
             placeholder.width(wInput.val());
             placeholder.width(hInput.val());
@@ -92,6 +89,8 @@ description="Create Image Placeholder."
         }
 
         $('#generate').click(reset);
+
+        reset();
 
     });
 </script>
