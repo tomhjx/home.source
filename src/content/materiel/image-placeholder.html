@@ -3,72 +3,7 @@ title = "Image Placeholder"
 description="Create Image Placeholder."
 +++
 
-<!-- 
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">@</span>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-  </div>
-  
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <span class="input-group-text" id="basic-addon2">@example.com</span>
-  </div>
-  
-  <div class="mb-3">
-    <label for="basic-url" class="form-label">Your vanity URL</label>
-    <div class="input-group">
-      <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-    </div>
-    <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
-  </div>
-  
-  <div class="input-group mb-3">
-    <span class="input-group-text">$</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    <span class="input-group-text">.00</span>
-  </div>
-  
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-    <span class="input-group-text">@</span>
-    <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-  </div>
-  
-  <div class="input-group">
-    <span class="input-group-text">With textarea</span>
-    <textarea class="form-control" aria-label="With textarea"></textarea>
-  </div> 
-
-<div class="row g-3">
-  <div class="col-sm-7">
-    <input type="text" class="form-control" placeholder="City" aria-label="City">
-  </div>
-  <div class="col-sm">
-    <input type="text" class="form-control" placeholder="State" aria-label="State">
-  </div>
-  <div class="col-sm">
-    <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
-  </div>
-</div>
--->
-
 <div class="container-fluid">
-
-
-    <!-- <div class="input-group mb-3">
-
-        <span class="input-group-text">Width</span>
-        <input type="text" class="form-control" >
-        <span class="input-group-text">px</span>
-
-        <span class="input-group-text">High</span>
-        <input type="text" class="form-control" >
-        <span class="input-group-text">px</span>
-
-        <span class="input-group-text">Color</span>
-        <input type="color" class="form-control form-control-color" id="colorInput" value="#563d7c" title="Choose your color">
-    </div> -->
 
     <div class="mb-3 row">
         <div class="col-sm input-group">
@@ -84,11 +19,32 @@ description="Create Image Placeholder."
         </div>
 
         <div class="col-sm input-group">
-            <span class="input-group-text">Color</span>
-            <input type="color" class="form-control form-control-color" id="colorInput" value="#563d7c" title="Choose your color">
+            <span class="input-group-text">Background Color</span>
+            <input type="color" class="form-control form-control-color" id="bgColorInput" value="#563d7c" title="Choose your color">
+        </div>
+
+        <div class="col-sm input-group">
+            <span class="input-group-text">Text Color</span>
+            <input type="color" class="form-control form-control-color" id="txtColorInput" value="#563d7c" title="Choose your color">
         </div>
 
     </div>
+
+
+    <div class="mb-3 row">
+        <div class="col-sm input-group">
+            <span class="input-group-text">Text</span>
+            <input type="text" class="form-control" id="textInput" >
+        </div>
+    </div>
+
+
+    <div class="mb-3 row">
+        <div class="col p-2">
+            <button class="btn btn-outline-primary btn-sm" id="generate">Generate</button>
+        </div>
+    </div>
+
     <div class="mb-3 row">
         <canvas id="placeholder" width="300" height="200"></canvas>
     </div>
