@@ -1,0 +1,42 @@
++++
+title = "Date"
+description="Transform Date Time."
++++
+
+<div class="container-fluid">
+
+    <div class="mb-3 row">
+        <div class="col p-2">
+
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <div class="col-sm input-group">
+            <input type="text" class="form-control" id="unixTime" >
+            <select class="form-select form-select-sm" id="unixTimeUnit">
+                <option>s</option>
+                <option>ms</option>
+            </select>
+        </div>
+
+        <div class="col-sm input-group">
+            <select class="form-select form-select-sm" aria-label="Time Zone"></select>
+            <input type="text" class="form-control" id="dateTime" placeholder="YYYY-MM-DD HH:mm:ss, e.g. 2024-02-09 07:43:26" >
+        </div>
+
+    </div>
+
+    <div class="mb-3 row">
+        <div class="col p-2">
+            <button class="btn btn-outline-primary btn-sm" id="unix2date">Unix Time to Date Time</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+
+
+    });
+</script>
