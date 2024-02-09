@@ -35,7 +35,9 @@ description="Transform Date Time."
 
 <script>
     $(function(){
-
+        setInterval(function(){
+            $('#nowUnixTime').text(Date.parse(new Date()));
+        }, 1000)
 
     });
 </script>
