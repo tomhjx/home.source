@@ -54,8 +54,8 @@ description="Transform Date Time."
         }, 1000);
 
         $('#timestamp2date').click(function(){
-            timestamp = parseInt($('#timestamp').val(), 10)
-            timestampUnit = $('#timestampUnit').val()
+            var timestamp = parseInt($('#timestamp').val(), 10)
+            var timestampUnit = $('#timestampUnit').val()
 
             switch (timestampUnit) {
                 case 's':
@@ -64,9 +64,6 @@ description="Transform Date Time."
                 default:
                     break;
             }
-
-            console.log(timestamp)
-
             var t = moment.tz(timestamp, timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
             $('#dateTime').val(t);
         });
