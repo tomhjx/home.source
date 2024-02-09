@@ -39,7 +39,7 @@ description="Transform Date Time."
 <script>
     $(function(){
 
-        console.log(momentTz.tz.guess());
+        console.log(moment.tz.guess());
 
         $.each(moment.tz.names(), function(k, v){
             $('#timeZone').append('<option value="'+v+'">'+v+'</option>');
