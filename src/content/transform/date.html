@@ -7,16 +7,16 @@ description="Transform Date Time."
 
     <div class="mb-3 row">
         <div class="col">Now:
-            <span class="col" id="nowUnixTime"></span>s
+            <span class="col" id="nowTimestamp"></span>s
         </div>
     </div>
 
     <div class="mb-3 row">
         <div class="col">
-            <input type="text" class="form-control" id="unixTime" >
+            <input type="text" class="form-control" id="timestamp" >
         </div>
         <div class="col">
-            <select class="form-control form-select form-select-sm" id="unixTimeUnit">
+            <select class="form-control form-select form-select-sm" id="timestampUnit">
                 <option value="s" >s</option>
                 <option value="ms" >ms</option>
             </select>
@@ -34,7 +34,8 @@ description="Transform Date Time."
 
     <div class="mb-3 row">
         <div class="col p-2">
-            <button class="btn btn-outline-primary btn-sm" id="unix2date">Unix Time to Date Time</button>
+            <button class="btn btn-outline-primary btn-sm" id="timestamp2date">Unix Time to Date Time</button>
+            <button class="btn btn-outline-primary btn-sm" id="date2timestamp">Date Time to Unix Time</button>
         </div>
     </div>
 </div>
@@ -51,22 +52,39 @@ description="Transform Date Time."
         timeZoneSel.val(moment.tz.guess());
 
         setInterval(function(){
-            $('#nowUnixTime').text(Date.parse(new Date())/1000);
+            $('#nowTimestamp').text(Date.parse(new Date())/1000);
         }, 1000);
 
-        $('#unix2date').click(function(){
-            unixTime = $('#unixTimeUnit').val()
+        $('#timestamp2date').click(function(){
+            timestamp = $('#timestamp').val()
+            timestampUnit = $('#timestampUnit').val()
 
-            switch (unixTime) {
+            switch (timestampUnit) {
                 case 's':
-                    unixTime = unixTime*1000;
+                    timestamp = timestamp*1000;
                     break;
                 default:
                     break;
             }
 
-            var t = moment.tz(unixTime, timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
+            var t = moment.tz(timestamp, timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
             $('#dateTime').val(t);
+        });
+
+        $('#date2timestamp').click(function(){
+
+            var t = moment.tz($('#dateTime').val(), 'YYYY-MM-DD HH:mm:ss', timeZoneSel.val()).valueOf();
+
+            timestampUnit = $('#timestampUnit').val()
+
+            switch (unixTime) {
+                case 's':
+                    t = t/1000;
+                    break;
+                default:
+                    break;
+            }
+            $('#timestamp').val(t);
         });
 
     });
