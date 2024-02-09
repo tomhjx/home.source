@@ -70,13 +70,13 @@ description="Transform Date Time."
                 default:
                     break;
             }
-            var t = moment.tz(timestamp, timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
+            var t = moment.tz(timestamp, timeZoneSel.val()).format(dateFormat.val());
             $('#dateTime').val(t);
         });
 
         $('#date2timestamp').click(function(){
 
-            var t = moment.tz($('#dateTime').val(), 'YYYY-MM-DD HH:mm:ss', timeZoneSel.val()).valueOf();
+            var t = moment.tz($('#dateTime').val(), dateFormat.val(), timeZoneSel.val()).valueOf();
 
             timestampUnit = $('#timestampUnit').val()
 
