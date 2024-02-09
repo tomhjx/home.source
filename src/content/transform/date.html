@@ -66,6 +66,8 @@ description="Transform Date Time."
                     break;
             }
 
+            var t = moment().tz(timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
+            $('#dateTime').val(t);
         });
 
     });
