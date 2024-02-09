@@ -39,11 +39,12 @@ description="Transform Date Time."
 <script>
     $(function(){
 
-        console.log(moment.tz.guess());
-
+        var timeZoneSel = $('#timeZone');
+        
         $.each(moment.tz.names(), function(k, v){
-            $('#timeZone').append('<option value="'+v+'">'+v+'</option>');
+            timeZoneSel.append('<option value="'+v+'">'+v+'</option>');
         });
+        timeZoneSel.val(moment.tz.guess());
 
         setInterval(function(){
             $('#nowUnixTime').text(Date.parse(new Date()));
