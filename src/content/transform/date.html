@@ -12,16 +12,21 @@ description="Transform Date Time."
     </div>
 
     <div class="mb-3 row">
-        <div class="col-sm">
+        <div class="col">
             <input type="text" class="form-control" id="unixTime" >
+        </div>
+        <div class="col">
             <select class="form-select form-select-sm" id="unixTimeUnit">
                 <option value="s" >s</option>
                 <option value="ms" >ms</option>
             </select>
         </div>
 
-        <div class="col-sm">
+        <div class="col">
             <select class="form-select form-select-sm mb-3" aria-label="Time Zone" id="timeZone"></select>
+        </div>
+        
+        <div class="col">
             <input type="text" class="form-control" id="dateTime" placeholder="YYYY-MM-DD HH:mm:ss, e.g. 2024-02-09 07:43:26" >
         </div>
 
@@ -40,7 +45,7 @@ description="Transform Date Time."
     $(function(){
 
         var timeZoneSel = $('#timeZone');
-
+        
         $.each(moment.tz.names(), function(k, v){
             timeZoneSel.append('<option value="'+v+'">'+v+'</option>');
         });
