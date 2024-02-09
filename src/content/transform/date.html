@@ -21,7 +21,7 @@ description="Transform Date Time."
         </div>
 
         <div class="col-sm input-group">
-            <select class="form-select form-select-sm" aria-label="Time Zone" id="timeZone">
+            <select class="form-select form-select-sm mb-3" aria-label="Time Zone" id="timeZone">
                 <Option value='Africa/Abidjan'>Africa/Abidjan</Option>
                 <Option value='Africa/Accra'>Africa/Accra</Option>
                 <Option value='Africa/Addis_Ababa'>Africa/Addis_Ababa</Option>
@@ -631,7 +631,7 @@ description="Transform Date Time."
 <script>
     $(function(){
 
-        console.log(zone.name);
+        console.log(moment.tz.names());
 
         setInterval(function(){
             $('#nowUnixTime').text(Date.parse(new Date()));
