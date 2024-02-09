@@ -54,7 +54,7 @@ description="Transform Date Time."
         }, 1000);
 
         $('#timestamp2date').click(function(){
-            timestamp = $('#timestamp').val()
+            timestamp = parseInt($('#timestamp').val(), 10)
             timestampUnit = $('#timestampUnit').val()
 
             switch (timestampUnit) {
