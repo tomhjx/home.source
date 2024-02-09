@@ -7,7 +7,7 @@ description="Transform Date Time."
 
     <div class="mb-3 row">
         <div class="col">Now:
-            <span class="col" id="nowUnixTime"></span>
+            <span class="col" id="nowUnixTime"></span>s
         </div>
     </div>
 
@@ -25,7 +25,7 @@ description="Transform Date Time."
         <div class="col">
             <select class="form-select form-select-sm mb-3" aria-label="Time Zone" id="timeZone"></select>
         </div>
-        
+
         <div class="col">
             <input type="text" class="form-control" id="dateTime" placeholder="YYYY-MM-DD HH:mm:ss, e.g. 2024-02-09 07:43:26" >
         </div>
@@ -52,7 +52,7 @@ description="Transform Date Time."
         timeZoneSel.val(moment.tz.guess());
 
         setInterval(function(){
-            $('#nowUnixTime').text(Date.parse(new Date()));
+            $('#nowUnixTime').text(Date.parse(new Date())/1000);
         }, 1000);
 
         $('#unix2date').click(function(){
