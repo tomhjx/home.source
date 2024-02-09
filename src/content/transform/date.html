@@ -43,6 +43,8 @@ description="Transform Date Time."
 
 <script>
     $(function(){
+        const momentTz = require('moment-timezone');
+
 
         var timeZoneSel = $('#timeZone');
         
@@ -66,7 +68,7 @@ description="Transform Date Time."
                     break;
             }
 
-            var t = moment().tz(timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
+            var t = momentTz.tz(unixTime, timeZoneSel.val()).format('YYYY-MM-DD HH:mm:ss');
             $('#dateTime').val(t);
         });
 
