@@ -46,7 +46,7 @@ description="Query IP address location."
 
         $('#query').click(function(){
             ip = $('#ipInput').val();
-            $.getJSON("https://api.ip.sb/geoip/"+ip,
+            $.getJSON("https://api.ip.sb/geoip/"+encodeURIComponent(ip),
                 function(d) {
                     $('#ip').text(d.ip);
                     $('#ipOrganization').text(d.organization);
