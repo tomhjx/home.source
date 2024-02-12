@@ -2,3 +2,31 @@
 title = "IP Information"
 description="Query IP address location."
 +++
+
+<div class="container-fluid">
+    <div class="mb-3 row">
+        <input type="text" class="form-control" id="ipInput" placeholder="1.1.1.1" />
+        <button class="btn btn-outline-primary btn-sm" id="query">Query</button>
+    </div>
+    <div class="mb-3 row">
+        <div class="col p-3">Organization</div>
+        <div class="col p-3" id="ipOrganization"></div>
+    </div>
+
+</div>
+
+<script>
+    $(function(){
+
+        $('#query').click(function(){
+            ip = $('#ipInput').val();
+            $.getJSON("https://api.ip.sb/geoip/"+ip,
+                function(d) {
+                    $('#ipOrganization').text(d.organization);
+                }
+            );
+
+        });
+
+    });
+</script>
