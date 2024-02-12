@@ -12,6 +12,10 @@ description="Query IP address location."
 
         <table class="table">
             <tr>
+                <th scope="row">IP</th>
+                <td id="ip"></td>
+            </tr>
+            <tr>
                 <th scope="row">Country Code</th>
                 <td id="ipCC"></td>
             </tr>
@@ -22,7 +26,7 @@ description="Query IP address location."
         </table>
 
     </div>
-    
+
     <div class="mb-3 row">
         <div class="col p-3">Time Zone:</div>
         <div class="col p-3" id="ipTZ"></div>
@@ -47,6 +51,7 @@ description="Query IP address location."
             ip = $('#ipInput').val();
             $.getJSON("https://api.ip.sb/geoip/"+ip,
                 function(d) {
+                    $('#ip').text(d.ip);
                     $('#ipOrganization').text(d.organization);
                     $('#ipOrganizationAsn').text(d.asn_organization);
                     $('#ipCC').text(d.asn_organization);
