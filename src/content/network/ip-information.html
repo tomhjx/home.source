@@ -16,16 +16,28 @@ description="Query IP address location."
                 <td id="ip"></td>
             </tr>
             <tr>
-                <th scope="row">Country Code</th>
-                <td id="ipCC"></td>
+                <th scope="row">Latitude</th>
+                <td id="ipLatitude"></td>
             </tr>
             <tr>
-                <th scope="row">Postal Code</th>
-                <td id="ipPC"></td>
+                <th scope="row">Longitude</th>
+                <td id="ipLongitude"></td>
             </tr>
             <tr>
                 <th scope="row">Time Zone</th>
                 <td id="ipTZ"></td>
+            </tr>
+            <tr>
+                <th scope="row">Country</th>
+                <td id="ipC"></td>
+            </tr>
+            <tr>
+                <th scope="row">Country Code</th>
+                <td id="ipCC"></td>
+            </tr>            
+            <tr>
+                <th scope="row">Postal Code</th>
+                <td id="ipPC"></td>
             </tr>
             <tr>
                 <th scope="row">Organization</th>
@@ -51,9 +63,12 @@ description="Query IP address location."
                     $('#ip').text(d.ip);
                     $('#ipOrganization').text(d.organization);
                     $('#ipOrganizationAsn').text(d.asn_organization);
-                    $('#ipCC').text(d.asn_organization);
-                    $('#ipTZ').text(d.country_code);
+                    $('#ipTZ').text(d.timezone);
+                    $('#ipCC').text(d.country_code);
+                    $('#ipC').text(d.country);
                     $('#ipPC').text(d.postal_code);
+                    $('#ipLatitude').text(d.latitude);
+                    $('#ipLongitude').text(d.longitude);
                 }
             );
 
