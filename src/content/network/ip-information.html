@@ -28,13 +28,25 @@ description="Query IP address location."
                 <td id="ipTZ"></td>
             </tr>
             <tr>
+                <th scope="row">Country Code</th>
+                <td id="ipCC"></td>
+            </tr>            
+            <tr>
                 <th scope="row">Country</th>
                 <td id="ipC"></td>
             </tr>
             <tr>
-                <th scope="row">Country Code</th>
-                <td id="ipCC"></td>
-            </tr>            
+                <th scope="row">Region</th>
+                <td id="ipRegion"></td>
+            </tr>
+            <tr>
+                <th scope="row">Region Code</th>
+                <td id="ipRegionCode"></td>
+            </tr>
+            <tr>
+                <th scope="row">City</th>
+                <td id="ipCity"></td>
+            </tr>
             <tr>
                 <th scope="row">Postal Code</th>
                 <td id="ipPC"></td>
@@ -44,8 +56,16 @@ description="Query IP address location."
                 <td id="ipOrganization"></td>
             </tr>
             <tr>
-                <th scope="row">Organization (ASN)</th>
-                <td id="ipOrganizationAsn"></td>
+                <th scope="row">ASN</th>
+                <td id="ipAsn"></td>
+            </tr>
+            <tr>
+                <th scope="row">ASN Organization</th>
+                <td id="ipAsnOrganization"></td>
+            </tr>
+            <tr>
+                <th scope="row">ISP</th>
+                <td id="ipISP"></td>
             </tr>
         </table>
 
@@ -62,13 +82,18 @@ description="Query IP address location."
                 function(d) {
                     $('#ip').text(d.ip);
                     $('#ipOrganization').text(d.organization);
-                    $('#ipOrganizationAsn').text(d.asn_organization);
+                    $('#ipAsn').text(d.asn);
+                    $('#ipAsnOrganization').text(d.asn_organization);
                     $('#ipTZ').text(d.timezone);
                     $('#ipCC').text(d.country_code);
                     $('#ipC').text(d.country);
+                    $('#ipRegion').text(d.region);
+                    $('#ipRegionCode').text(d.region_code);
+                    $('#ipCity').text(d.city);
                     $('#ipPC').text(d.postal_code);
                     $('#ipLatitude').text(d.latitude);
                     $('#ipLongitude').text(d.longitude);
+                    $('#ipISP').text(d.isp);
                 }
             );
 
