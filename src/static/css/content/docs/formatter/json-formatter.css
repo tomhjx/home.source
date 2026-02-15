@@ -1,4 +1,4 @@
-.json-formatter-simple textarea {
+.json-formatter-docsy textarea {
   min-height: 320px;
   font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Menlo", monospace;
   font-size: 0.95rem;
@@ -6,11 +6,15 @@
   resize: vertical;
 }
 
-.json-formatter-simple textarea:focus {
+.json-formatter-docsy textarea:focus {
   box-shadow: none;
 }
 
-.json-formatter-simple .json-tree {
+.json-formatter-docsy .card textarea {
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.json-formatter-docsy .json-tree {
   min-height: 320px;
   padding: 0.75rem 1rem;
   font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Menlo", monospace;
@@ -20,6 +24,24 @@
   overflow: auto;
 }
 
-.json-formatter-simple .alert {
+.json-formatter-docsy .json-tree details {
+  margin-left: 1rem;
+}
+
+.json-formatter-docsy .json-tree summary {
+  cursor: pointer;
+}
+
+.json-formatter-docsy .json-tree .tree-leaf {
+  margin-left: 1rem;
+}
+
+.json-formatter-docsy .view-toggle .btn.active {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.json-formatter-docsy .alert {
   font-size: 0.9rem;
 }
