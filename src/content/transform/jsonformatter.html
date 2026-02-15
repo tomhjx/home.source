@@ -25,7 +25,7 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
               <button type="button" class="btn btn-outline-primary" data-action="clear">Clear</button>
             </div>
           </div>
-          <textarea id="json-input" class="form-control flex-grow-1" spellcheck="false" placeholder='{"name":"Home Source","features":["format","validate"]}'></textarea>
+          <textarea id="json-input" class="form-control flex-grow-1" style="height: 500px;" spellcheck="false" placeholder='{"name":"Home Source","features":["format","validate"]}'></textarea>
         </div>
       </div>
     </div>
@@ -46,15 +46,15 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
               <option value="4" selected>4 spaces</option>
               <option value="tab">Tabs</option>
             </select>
-          </div>
-          <div class="col-sm-3">
+
             <div class="form-check mt-3 mt-sm-0">
               <input class="form-check-input" type="checkbox" id="sort-keys">
               <label class="form-check-label" for="sort-keys">Sort keys alphabetically</label>
             </div>
+
           </div>
           </div>
-          <textarea id="json-output" class="form-control flex-grow-1 mb-2" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
+          <textarea id="json-output" class="form-control flex-grow-1 mb-2" style="height: 500px;" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
           <div id="json-tree" class="json-tree border rounded" hidden></div>
         </div>
       </div>
