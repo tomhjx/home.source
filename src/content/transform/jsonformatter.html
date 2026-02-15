@@ -7,60 +7,56 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
 <link rel="stylesheet" href="/css/content/docs/formatter/json-formatter.css">
 <script src="/js/content/docs/formatter/json-formatter.js" defer></script>
 
-<section class="json-formatter">
-  <div class="formatter-toolbar d-flex flex-wrap align-items-center" role="group" aria-label="Formatter controls">
-    <div class="btn-group btn-group-sm" role="group" aria-label="Formatting actions">
-      <button type="button" class="btn btn-outline-primary" data-action="format">Format</button>
-      <button type="button" class="btn btn-outline-primary" data-action="minify">Minify</button>
-      <button type="button" class="btn btn-outline-secondary" data-action="copy">Copy</button>
+<section class="json-formatter-simple container-fluid">
+  <div class="row align-items-center g-2 mb-3">
+    <div class="col-auto">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Formatting actions">
+        <button type="button" class="btn btn-outline-primary" data-action="format">Format</button>
+        <button type="button" class="btn btn-outline-primary" data-action="minify">Minify</button>
+        <button type="button" class="btn btn-outline-secondary" data-action="copy">Copy</button>
+        <button type="button" class="btn btn-outline-secondary" data-action="clear">Clear</button>
+      </div>
     </div>
-    <label class="form-label mb-0 ms-auto">
-      Indent
-      <select id="indent-size" class="form-select form-select-sm d-inline-block w-auto ms-1">
+    <div class="col-auto">
+      <label class="form-label mb-0 small">Indent</label>
+      <select id="indent-size" class="form-select form-select-sm">
         <option value="2">2 spaces</option>
         <option value="4" selected>4 spaces</option>
         <option value="tab">Tabs</option>
       </select>
-    </label>
-    <label class="form-check ms-3 mb-0">
+    </div>
+    <div class="col-auto form-check form-check-inline mb-0">
       <input class="form-check-input" type="checkbox" id="sort-keys">
-      <span class="form-check-label">Sort keys alphabetically</span>
-    </label>
-  </div>
-
-  <div class="formatter-panels row g-4">
-    <div class="col-lg-6">
-      <div class="formatter-card">
-        <div class="formatter-card__header">
-          <div>
-            <p class="label">Source JSON</p>
-            <span class="helper">Paste raw JSON or drop a .json file.</span>
-          </div>
-          <button type="button" class="btn btn-link btn-sm text-decoration-none" data-action="clear">Clear</button>
-        </div>
-        <textarea id="json-input" class="form-control" spellcheck="false" placeholder='{"name":"Home Source","features":["format","validate"]}'></textarea>
-      </div>
+      <label class="form-check-label" for="sort-keys">Sort keys</label>
     </div>
-    <div class="col-lg-6">
-      <div class="formatter-card">
-        <div class="formatter-card__header align-items-center">
-          <div>
-            <p class="label">Output</p>
-            <span class="helper">Switch between formatted text and collapsible tree.</span>
-          </div>
-          <div class="btn-group btn-group-sm view-toggle" role="group" aria-label="View mode">
-            <button type="button" class="btn btn-outline-secondary active" data-view="pretty">Formatted</button>
-            <button type="button" class="btn btn-outline-secondary" data-view="tree">Tree</button>
-          </div>
-        </div>
-        <textarea id="json-output" class="form-control" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
-        <div id="json-tree" class="json-tree" hidden></div>
+    <div class="col-auto">
+      <div class="btn-group btn-group-sm view-toggle" role="group" aria-label="View mode">
+        <button type="button" class="btn btn-outline-secondary active" data-view="pretty">Formatted</button>
+        <button type="button" class="btn btn-outline-secondary" data-view="tree">Tree</button>
       </div>
     </div>
   </div>
 
-  <div class="status-panel mt-4" id="json-status" role="status" aria-live="polite">
-    Paste JSON or drop a file to begin. Your data never leaves the browser.
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="json-input" class="form-label fw-semibold">Source JSON</label>
+      <textarea id="json-input" class="form-control" spellcheck="false" placeholder='{"name":"Home Source","features":["format","validate"]}'></textarea>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label fw-semibold d-flex justify-content-between align-items-center" for="json-output">
+        Output
+      </label>
+      <textarea id="json-output" class="form-control" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
+      <div id="json-tree" class="json-tree border rounded mt-2" hidden></div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <div class="alert alert-light border" id="json-status" role="status" aria-live="polite">
+        Paste JSON or drop a file to begin. Your data never leaves the browser.
+      </div>
+    </div>
   </div>
 </section>
 
