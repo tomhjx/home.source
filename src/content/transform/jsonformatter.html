@@ -8,7 +8,12 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
 <script src="/js/content/docs/formatter/json-formatter.js" defer></script>
 
 <div class="container-fluid">
-  <div class="row g-4">
+  <div class="alert alert-info alert-sm shadow-sm mt-4" id="json-status" role="status" aria-live="polite">
+    Paste JSON or drop a file to begin. Your data never leaves the browser.
+  </div>
+
+  <div class="row">
+
     <div class="col-md-6">
       <div class="card shadow-sm h-500">
         <div class="card-body d-flex flex-column">
@@ -54,10 +59,7 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="alert alert-info alert-sm shadow-sm mt-4" id="json-status" role="status" aria-live="polite">
-    Paste JSON or drop a file to begin. Your data never leaves the browser.
+    
   </div>
 </div>
 
