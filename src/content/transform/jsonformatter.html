@@ -8,14 +8,10 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
 <script src="/js/content/docs/formatter/json-formatter.js" defer></script>
 
 <div class="container-fluid">
-  <div class="row align-items-center mb-4 gy-3">
-    <div class="col-lg-4 text-lg-end">
-      <div class="btn-group btn-group-sm" role="group" aria-label="Formatting actions">
-        <button type="button" class="btn btn-outline-primary btn-sm" data-action="format">Format</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" data-action="minify">Minify</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" data-action="copy">Copy</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" data-action="clear">Clear</button>
-      </div>
+  <div class="row gy-3 align-items-center mb-4">
+    <div class="col-lg-8">
+      <p class="text-uppercase text-muted small mb-1">Transform tool</p>
+      <h1 class="h2 mb-0">JSON Formatter &amp; Validator</h1>
     </div>
   </div>
 
@@ -47,7 +43,14 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
     <div class="col-md-6">
       <div class="card shadow-sm h-100">
         <div class="card-body d-flex flex-column">
-          <p class="text-uppercase text-muted small mb-2">Source JSON</p>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <p class="text-uppercase text-muted small mb-0">Source JSON</p>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Source actions">
+              <button type="button" class="btn btn-outline-primary" data-action="format">Format</button>
+              <button type="button" class="btn btn-outline-primary" data-action="minify">Minify</button>
+              <button type="button" class="btn btn-outline-secondary" data-action="clear">Clear</button>
+            </div>
+          </div>
           <textarea id="json-input" class="form-control flex-grow-1" spellcheck="false" placeholder='{"name":"Home Source","features":["format","validate"]}'></textarea>
         </div>
       </div>
@@ -57,6 +60,7 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <p class="text-uppercase text-muted small mb-0">Output</p>
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-action="copy">Copy</button>
           </div>
           <textarea id="json-output" class="form-control flex-grow-1 mb-2" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
           <div id="json-tree" class="json-tree border rounded" hidden></div>
