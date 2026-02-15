@@ -13,49 +13,12 @@
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.json-formatter .gradient-shell {
+.json-formatter .formatter-hero {
   background: #fff;
   border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 1.5rem;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  margin-bottom: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-
-.json-formatter .hero-actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.json-formatter .btn-dark {
-  background: var(--slate-900);
-  border: none;
-  color: #fff;
-  padding-inline: 1.5rem;
-}
-
-.json-formatter .btn-outline-dark {
-  border: 1px solid rgba(15, 23, 42, 0.18);
-  color: var(--slate-900);
-  padding-inline: 1.5rem;
-}
-
-.json-formatter .hero-meta {
-  display: grid;
-  gap: 1rem;
-  font-size: 0.95rem;
-  color: var(--slate-600);
-}
-
-.json-formatter .hero-meta__label {
-  display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--slate-600);
+  border-radius: 1rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  margin-bottom: 1.5rem;
 }
 
 .json-formatter .eyebrow {
@@ -76,27 +39,23 @@
   color: rgba(15, 23, 42, 0.85);
 }
 
-.json-formatter .hero-meta li {
-  font-size: 0.95rem;
-  color: var(--slate-600);
-}
 
 .formatter-toolbar {
   background: #fff;
   border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 1rem;
-  padding: 0.75rem 1rem;
-  gap: 0.75rem;
-  margin: 1.5rem auto;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  gap: 0.5rem;
+  margin: 1.25rem auto;
   flex-wrap: wrap;
 }
 
 
 .formatter-toolbar .btn {
-  min-width: 110px;
+  min-width: 96px;
   font-weight: 500;
   color: var(--slate-900);
-  border-color: rgba(15, 23, 42, 0.18);
+  border-color: rgba(15, 23, 42, 0.16);
   background: #fff;
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
@@ -138,13 +97,13 @@
 
 .formatter-card {
   background: #fff;
-  border-radius: 1rem;
-  padding: 1.25rem;
+  border-radius: 0.85rem;
+  padding: 1rem;
   border: 1px solid rgba(15, 23, 42, 0.08);
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
   width: 100%;
 }
 
@@ -170,10 +129,10 @@
 
 .formatter-card textarea {
   flex: 1 1 auto;
-  min-height: clamp(360px, 55vh, 520px);
-  border-radius: 0.85rem;
+  min-height: 320px;
+  border-radius: 0.7rem;
   border: 1px solid rgba(15, 23, 42, 0.12);
-  padding: 1.1rem;
+  padding: 1rem;
   background: var(--slate-50);
   font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Menlo", monospace;
   font-size: 0.95rem;
@@ -222,10 +181,10 @@
   line-height: 1.5;
   background: var(--slate-50);
   border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 0.85rem;
-  padding: 1rem 1.1rem;
+  border-radius: 0.7rem;
+  padding: 0.9rem 1rem;
   flex: 1 1 auto;
-  min-height: clamp(360px, 55vh, 520px);
+  min-height: 320px;
   overflow: auto;
 }
 
