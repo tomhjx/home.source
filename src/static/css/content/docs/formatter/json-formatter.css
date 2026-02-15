@@ -14,16 +14,16 @@
 }
 
 .json-formatter .gradient-shell {
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.25), rgba(37, 99, 235, 0));
+  background: #fff;
   border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 2rem;
-  padding: clamp(1.5rem, 4vw, 2.75rem);
-  margin-bottom: 2.5rem;
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
 }
+
 
 .json-formatter .hero-actions {
   display: flex;
@@ -34,13 +34,13 @@
   background: var(--slate-900);
   border: none;
   color: #fff;
-  padding-inline: 1.75rem;
+  padding-inline: 1.5rem;
 }
 
 .json-formatter .btn-outline-dark {
-  border: 1px solid rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(15, 23, 42, 0.18);
   color: var(--slate-900);
-  padding-inline: 1.75rem;
+  padding-inline: 1.5rem;
 }
 
 .json-formatter .hero-meta {
@@ -84,20 +84,20 @@
 .formatter-toolbar {
   background: #fff;
   border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 999px;
+  border-radius: 1rem;
   padding: 0.75rem 1rem;
-  gap: 1.25rem;
-  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
-  margin: 2rem auto;
+  gap: 0.75rem;
+  margin: 1.5rem auto;
   flex-wrap: wrap;
 }
+
 
 .formatter-toolbar .btn {
   min-width: 110px;
   font-weight: 500;
   color: var(--slate-900);
-  border-color: rgba(15, 23, 42, 0.25);
-  background: rgba(15, 23, 42, 0.03);
+  border-color: rgba(15, 23, 42, 0.18);
+  background: #fff;
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
@@ -138,10 +138,9 @@
 
 .formatter-card {
   background: #fff;
-  border-radius: 1.25rem;
-  padding: 1.5rem;
+  border-radius: 1rem;
+  padding: 1.25rem;
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.07);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -171,10 +170,10 @@
 
 .formatter-card textarea {
   flex: 1 1 auto;
-  min-height: clamp(420px, 60vh, 620px);
-  border-radius: 1rem;
+  min-height: clamp(360px, 55vh, 520px);
+  border-radius: 0.85rem;
   border: 1px solid rgba(15, 23, 42, 0.12);
-  padding: 1.25rem;
+  padding: 1.1rem;
   background: var(--slate-50);
   font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Menlo", monospace;
   font-size: 0.95rem;
@@ -223,10 +222,10 @@
   line-height: 1.5;
   background: var(--slate-50);
   border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 1rem;
-  padding: 1rem 1.25rem;
+  border-radius: 0.85rem;
+  padding: 1rem 1.1rem;
   flex: 1 1 auto;
-  min-height: clamp(420px, 60vh, 620px);
+  min-height: clamp(360px, 55vh, 520px);
   overflow: auto;
 }
 
