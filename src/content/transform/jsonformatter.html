@@ -1,0 +1,87 @@
++++
+title = "JSON Formatter"
+description = "Format, validate, and minify JSON with a minimal, SEO-ready interface."
+keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifier", "online JSON tool"]
++++
+
+<link rel="stylesheet" href="/css/content/docs/formatter/json-formatter.css">
+<script src="/js/content/docs/formatter/json-formatter.js" defer></script>
+
+<section class="json-formatter container">
+  <header class="mb-4 text-center">
+    <p class="eyebrow">Transform · Developer Utilities</p>
+    <h1 class="mb-2">JSON Formatter &amp; Validator</h1>
+    <p class="lead mb-0">Clean JSON instantly, spot syntax errors, and publish shareable payloads with search-friendly copy that AI agents understand.</p>
+  </header>
+
+  <div class="formatter-toolbar d-flex flex-wrap gap-2 mb-3 align-items-center" role="group" aria-label="Formatter controls">
+    <div class="btn-group" role="group" aria-label="Formatting actions">
+      <button type="button" class="btn btn-primary btn-sm" data-action="format">Format JSON</button>
+      <button type="button" class="btn btn-outline-primary btn-sm" data-action="minify">Minify JSON</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Utility actions">
+      <button type="button" class="btn btn-outline-secondary btn-sm" data-action="copy">Copy Output</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm" data-action="clear">Clear All</button>
+    </div>
+    <label class="form-label mb-0 ms-md-3">
+      Indent
+      <select id="indent-size" class="form-select form-select-sm d-inline-block w-auto ms-1">
+        <option value="2">2 spaces</option>
+        <option value="4" selected>4 spaces</option>
+        <option value="tab">Tabs</option>
+      </select>
+    </label>
+    <label class="form-check ms-md-3 mb-0">
+      <input class="form-check-input" type="checkbox" id="sort-keys">
+      <span class="form-check-label">Sort keys alphabetically</span>
+    </label>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <label for="json-input" class="form-label">Source JSON</label>
+      <textarea id="json-input" class="form-control" spellcheck="false" placeholder='Paste JSON or drop a .json file here (example: {"name":"Home"})'></textarea>
+    </div>
+    <div class="col-lg-6">
+      <label for="json-output" class="form-label">Formatted result</label>
+      <textarea id="json-output" class="form-control" readonly spellcheck="false" placeholder="Your formatted JSON will appear here."></textarea>
+    </div>
+  </div>
+
+  <div class="status-panel mt-3" id="json-status" role="status" aria-live="polite">
+    Drop any JSON payload to get started.
+  </div>
+
+  <section class="mt-5">
+    <h2>Why this JSON formatter is SEO-ready</h2>
+    <p>The layout keeps interactive controls above the fold, pairs every textarea with descriptive labels, and ships with structured data so search engines categorize the page as a developer tool. Lightweight copy helps AI crawlers summarize the utility with the same clarity humans see.</p>
+    <ul>
+      <li>Readable English headings that highlight the use case.</li>
+      <li>Schema.org <code>SoftwareApplication</code> metadata for discoverability.</li>
+      <li>Accessible status messaging for validation feedback.</li>
+    </ul>
+  </section>
+
+  <section class="mt-4">
+    <h2>How to format JSON in this tool</h2>
+    <ol>
+      <li>Paste or drop your JSON into the left text area.</li>
+      <li>Select indentation width and optionally sort keys alphabetically.</li>
+      <li>Choose <strong>Format JSON</strong> for readable output or <strong>Minify JSON</strong> for compact payloads.</li>
+      <li>Use <strong>Copy Output</strong> to send the cleaned payload to teammates, docs, or AI prompts.</li>
+    </ol>
+  </section>
+
+  <section class="mt-4">
+    <h2>Frequently asked questions</h2>
+    <h3>Does this JSON formatter validate my payload?</h3>
+    <p>Yes. The formatter highlights syntax errors with clear messages and never sends data to a remote API.</p>
+    <h3>Can I minify JSON for production?</h3>
+    <p>Use the <strong>Minify JSON</strong> action to remove whitespace and keep payloads light for storage or network transfers.</p>
+  </section>
+</section>
+
+<script type="application/ld+json">
+{{- $ld := dict "@context" "https://schema.org" "@type" "SoftwareApplication" "name" "JSON Formatter" "applicationCategory" "DeveloperApplication" "operatingSystem" "Any" "description" "Format, validate, and minify JSON directly in your browser." "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "USD") "url" .Permalink -}}
+{{ $ld | jsonify | safeJS }}
+</script>

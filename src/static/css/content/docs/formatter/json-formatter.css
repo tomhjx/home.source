@@ -1,0 +1,80 @@
+.json-formatter .eyebrow {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--td-muted, #6c757d);
+}
+
+.json-formatter textarea {
+  min-height: 320px;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Menlo", monospace;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  resize: vertical;
+  padding: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  background: #f8fafc;
+  color: #0f172a;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.json-formatter textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  outline: none;
+  background: #fff;
+}
+
+.json-formatter textarea.is-dragging {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+  background: #e0f2fe;
+}
+
+.json-formatter .formatter-toolbar {
+  gap: 0.5rem;
+}
+
+.json-formatter .formatter-toolbar .form-label,
+.json-formatter .formatter-toolbar .form-check-label {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.json-formatter select {
+  min-width: 7rem;
+}
+
+#json-status {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 0.95rem;
+  background: #f1f5f9;
+  border-left: 4px solid #94a3b8;
+  color: #0f172a;
+}
+
+#json-status[data-status="success"] {
+  background: #ecfdf5;
+  border-left-color: #10b981;
+  color: #065f46;
+}
+
+#json-status[data-status="error"] {
+  background: #fef2f2;
+  border-left-color: #ef4444;
+  color: #991b1b;
+}
+
+#json-status[data-status="info"] {
+  background: #eef2ff;
+  border-left-color: #6366f1;
+  color: #312e81;
+}
+
+.json-formatter .status-panel code {
+  font-family: inherit;
+  background: rgba(15, 23, 42, 0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+}
