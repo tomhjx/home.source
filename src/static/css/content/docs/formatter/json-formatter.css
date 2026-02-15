@@ -57,36 +57,6 @@
 }
 
 
-.formatter-toolbar .btn {
-  min-width: 96px;
-  font-weight: 500;
-  color: var(--slate-900);
-  border-color: rgba(15, 23, 42, 0.16);
-  background: #fff;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
-}
-
-.formatter-toolbar .btn:hover,
-.formatter-toolbar .btn:focus {
-  background: rgba(15, 23, 42, 0.08);
-  color: var(--slate-900);
-}
-
-.formatter-toolbar .btn.btn-outline-primary,
-.formatter-toolbar .btn.btn-outline-secondary {
-  background: transparent;
-  color: var(--slate-900);
-  border-color: rgba(15, 23, 42, 0.35);
-}
-
-.formatter-toolbar .btn.btn-outline-primary:hover,
-.formatter-toolbar .btn.btn-outline-primary:focus,
-.formatter-toolbar .btn.btn-outline-secondary:hover,
-.formatter-toolbar .btn.btn-outline-secondary:focus {
-  background: rgba(15, 23, 42, 0.08);
-  color: var(--slate-900);
-}
-
 .formatter-toolbar .form-label,
 .formatter-toolbar .form-check-label {
   font-weight: 500;
