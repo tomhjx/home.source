@@ -82,6 +82,18 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
 </section>
 
 <script type="application/ld+json">
-{{- $ld := dict "@context" "https://schema.org" "@type" "SoftwareApplication" "name" "JSON Formatter" "applicationCategory" "DeveloperApplication" "operatingSystem" "Any" "description" "Format, validate, and minify JSON directly in your browser." "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "USD") "url" .Permalink -}}
-{{ $ld | jsonify | safeJS }}
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "JSON Formatter",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "description": "Format, validate, and minify JSON directly in your browser.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "url": "{{ .Permalink }}"
+}
 </script>
