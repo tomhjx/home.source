@@ -1,29 +1,32 @@
 +++
-title = "JSON Formatter"
-description = "Format, validate, and minify JSON with a minimal, SEO-ready interface."
-keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifier", "online JSON tool"]
+title = "JSON Formatter & Validator"
+description = "Beautify, validate, and minify JSON for APIs, logs, and configuration files in seconds."
+keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifier", "JSON lint", "pretty print JSON"]
+++ 
 +++
 
 <link rel="stylesheet" href="/css/content/docs/formatter/json-formatter.css">
 <script src="/js/content/docs/formatter/json-formatter.js" defer></script>
 
-<section class="json-formatter container">
-  <header class="mb-4 text-center">
+<section class="json-formatter container-xl">
+  <div class="formatter-hero text-center mx-auto">
     <p class="eyebrow">Transform · Developer Utilities</p>
-    <h1 class="mb-2">JSON Formatter &amp; Validator</h1>
-    <p class="lead mb-0">Clean JSON instantly, spot syntax errors, and publish shareable payloads with search-friendly copy that AI agents understand.</p>
-  </header>
+    <h1 class="mb-3">JSON Formatter &amp; Validator</h1>
+    <p class="lead mb-4">Beautify raw JSON, uncover syntax errors, and ship readable payloads for documentation, pull requests, and API clients.</p>
+    <ul class="hero-meta list-unstyled d-flex flex-wrap justify-content-center gap-3 mb-0">
+      <li>Works entirely in your browser</li>
+      <li>Syntax validation on every run</li>
+      <li>Copy, minify, and tree view modes</li>
+    </ul>
+  </div>
 
-  <div class="formatter-toolbar d-flex flex-wrap gap-2 mb-3 align-items-center" role="group" aria-label="Formatter controls">
+  <div class="formatter-toolbar d-flex flex-wrap align-items-center" role="group" aria-label="Formatter controls">
     <div class="btn-group" role="group" aria-label="Formatting actions">
-      <button type="button" class="btn btn-primary btn-sm" data-action="format">Format JSON</button>
-      <button type="button" class="btn btn-outline-primary btn-sm" data-action="minify">Minify JSON</button>
+      <button type="button" class="btn btn-primary" data-action="format">Format JSON</button>
+      <button type="button" class="btn btn-outline-primary" data-action="minify">Minify JSON</button>
+      <button type="button" class="btn btn-outline-secondary" data-action="copy">Copy Result</button>
     </div>
-    <div class="btn-group" role="group" aria-label="Utility actions">
-      <button type="button" class="btn btn-outline-secondary btn-sm" data-action="copy">Copy Output</button>
-      <button type="button" class="btn btn-outline-secondary btn-sm" data-action="clear">Clear All</button>
-    </div>
-    <label class="form-label mb-0 ms-md-3">
+    <label class="form-label mb-0 ms-auto">
       Indent
       <select id="indent-size" class="form-select form-select-sm d-inline-block w-auto ms-1">
         <option value="2">2 spaces</option>
@@ -31,51 +34,71 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
         <option value="tab">Tabs</option>
       </select>
     </label>
-    <label class="form-check ms-md-3 mb-0">
+    <label class="form-check ms-3 mb-0">
       <input class="form-check-input" type="checkbox" id="sort-keys">
       <span class="form-check-label">Sort keys alphabetically</span>
     </label>
   </div>
 
-  <div class="row g-3">
+  <div class="formatter-panels row g-4">
     <div class="col-lg-6">
-      <label for="json-input" class="form-label">Source JSON</label>
-      <textarea id="json-input" class="form-control" spellcheck="false" placeholder='Paste JSON or drop a .json file here (example: {"name":"Home"})'></textarea>
+      <div class="formatter-card">
+        <div class="formatter-card__header">
+          <div>
+            <p class="label">Source JSON</p>
+            <span class="helper">Paste raw JSON or drop a .json file.</span>
+          </div>
+          <button type="button" class="btn btn-link btn-sm text-decoration-none" data-action="clear">Clear</button>
+        </div>
+        <textarea id="json-input" class="form-control" spellcheck="false" placeholder='{"name":"Home Source","features":["format","validate"]}'></textarea>
+      </div>
     </div>
     <div class="col-lg-6">
-      <label for="json-output" class="form-label">Formatted result</label>
-      <textarea id="json-output" class="form-control" readonly spellcheck="false" placeholder="Your formatted JSON will appear here."></textarea>
+      <div class="formatter-card">
+        <div class="formatter-card__header align-items-center">
+          <div>
+            <p class="label">Output</p>
+            <span class="helper">Switch between formatted text and collapsible tree.</span>
+          </div>
+          <div class="btn-group btn-group-sm view-toggle" role="group" aria-label="View mode">
+            <button type="button" class="btn btn-outline-secondary active" data-view="pretty">Formatted</button>
+            <button type="button" class="btn btn-outline-secondary" data-view="tree">Tree</button>
+          </div>
+        </div>
+        <textarea id="json-output" class="form-control" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
+        <div id="json-tree" class="json-tree" hidden></div>
+      </div>
     </div>
   </div>
 
-  <div class="status-panel mt-3" id="json-status" role="status" aria-live="polite">
-    Drop any JSON payload to get started.
+  <div class="status-panel mt-4" id="json-status" role="status" aria-live="polite">
+    Paste JSON or drop a file to begin. Your data never leaves the browser.
   </div>
 
   <section class="mt-5">
-    <h2>Why this JSON formatter is SEO-ready</h2>
-    <p>The layout keeps interactive controls above the fold, pairs every textarea with descriptive labels, and ships with structured data so search engines categorize the page as a developer tool. Lightweight copy helps AI crawlers summarize the utility with the same clarity humans see.</p>
+    <h2>Why developers rely on this JSON formatter</h2>
     <ul>
-      <li>Readable English headings that highlight the use case.</li>
-      <li>Schema.org <code>SoftwareApplication</code> metadata for discoverability.</li>
-      <li>Accessible status messaging for validation feedback.</li>
+      <li>Readable output with consistent indentation and monospace typography.</li>
+      <li>Built-in validation that flags syntax errors before JSON hits an API or repository.</li>
+      <li>Single-click minify mode to shrink payloads for network transfers.</li>
+      <li>Privacy-first workflow: everything runs locally in your browser.</li>
     </ul>
   </section>
 
   <section class="mt-4">
-    <h2>How to format JSON in this tool</h2>
+    <h2>How to format JSON online</h2>
     <ol>
-      <li>Paste or drop your JSON into the left text area.</li>
-      <li>Select indentation width and optionally sort keys alphabetically.</li>
-      <li>Choose <strong>Format JSON</strong> for readable output or <strong>Minify JSON</strong> for compact payloads.</li>
-      <li>Use <strong>Copy Output</strong> to send the cleaned payload to teammates, docs, or AI prompts.</li>
+      <li>Paste or drop raw JSON into the left editor.</li>
+      <li>Pick the indentation width you prefer and toggle key sorting if needed.</li>
+      <li>Select <strong>Format JSON</strong> for readable output or <strong>Minify JSON</strong> for compact payloads.</li>
+      <li>Copy the result to share in documentation, pull requests, or API clients.</li>
     </ol>
   </section>
 
   <section class="mt-4">
     <h2>Frequently asked questions</h2>
     <h3>Does this JSON formatter validate my payload?</h3>
-    <p>Yes. The formatter highlights syntax errors with clear messages and never sends data to a remote API.</p>
+    <p>Yes. The formatter highlights syntax errors with clear messages and never sends data to a server.</p>
     <h3>Can I minify JSON for production?</h3>
     <p>Use the <strong>Minify JSON</strong> action to remove whitespace and keep payloads light for storage or network transfers.</p>
   </section>

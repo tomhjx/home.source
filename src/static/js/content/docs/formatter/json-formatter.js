@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const indentSelect = document.getElementById("indent-size");
   const sortToggle = document.getElementById("sort-keys");
   const actionButtons = document.querySelectorAll("[data-action]");
+  const treeContainer = document.getElementById("json-tree");
+  const viewButtons = document.querySelectorAll("[data-view]");
+  let currentView = "pretty";
 
   if (!input || !output || !status) {
     return;
@@ -64,9 +67,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const escapeHtml = (value) =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+
+  const renderTree = (value, label = "root") => {
+    if (Array.isArray(value)) {
+      const items = value
+        .map((child, index) => renderTree(child, `[${index}]`))
+        .join("");
+      return `<details open><summary>${label} · ${value.length} items</summary>${items}</details>`;
+    }
+    if (value && typeof value === "object") {
+      const entries = Object.entries(value)
+        .map(([key, child]) => renderTree(child, key))
+        .join("");
+      return `<details open><summary>${label} · ${Object.keys(value).length} keys</summary>${entries}</details>`;
+    }
+
+    let type = typeof value;
+    if (value === null) {
+      type = "null";
+    }
+    const displayValue = value === null ? "null" : escapeHtml(value);
+    return `<div class="tree-leaf"><span class="tree-key">${label}:</span><span class="tree-value tree-value-${type}">${displayValue}</span></div>`;
+  };
+
   const runFormatter = (mode) => {
     const parsed = readJson();
     if (parsed === null) {
+      if (treeContainer) {
+        treeContainer.innerHTML = "";
+        treeContainer.hidden = true;
+      }
+      output.hidden = false;
+      if (treeContainer) {
+        treeContainer.hidden = true;
+      }
       return;
     }
 
@@ -83,6 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     output.value = formatted;
+    if (treeContainer) {
+      treeContainer.innerHTML = renderTree(source);
+      if (currentView === "tree") {
+        treeContainer.hidden = false;
+        output.hidden = true;
+      }
+    }
   };
 
   const copyOutput = async () => {
@@ -115,6 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearAll = () => {
     input.value = "";
     output.value = "";
+    if (treeContainer) {
+      treeContainer.innerHTML = "";
+      treeContainer.hidden = true;
+    }
+    output.hidden = false;
     setStatus("info", "Editor cleared.");
     input.focus();
   };
@@ -135,6 +187,34 @@ document.addEventListener("DOMContentLoaded", () => {
   actionButtons.forEach((button) => {
     button.addEventListener("click", handleAction);
   });
+
+  const updateView = (mode) => {
+    if (!treeContainer) {
+      return;
+    }
+    currentView = mode;
+    viewButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.view === mode);
+    });
+    if (mode === "tree") {
+      treeContainer.hidden = false;
+      output.hidden = true;
+    } else {
+      treeContainer.hidden = true;
+      output.hidden = false;
+    }
+  };
+
+  viewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.view;
+      if (target) {
+        updateView(target);
+      }
+    });
+  });
+
+  updateView("pretty");
 
   const highlightDropState = (state) => {
     if (state) {
@@ -172,6 +252,11 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener("input", () => {
     if (!input.value.trim()) {
       output.value = "";
+      if (treeContainer) {
+        treeContainer.innerHTML = "";
+        treeContainer.hidden = true;
+      }
+      output.hidden = false;
       setStatus("info", "Paste or drop JSON to begin.");
     }
   });
