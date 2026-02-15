@@ -13,6 +13,51 @@
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.json-formatter .gradient-shell {
+  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.25), rgba(37, 99, 235, 0));
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 2rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.json-formatter .hero-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.json-formatter .btn-dark {
+  background: var(--slate-900);
+  border: none;
+  color: #fff;
+  padding-inline: 1.75rem;
+}
+
+.json-formatter .btn-outline-dark {
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  color: var(--slate-900);
+  padding-inline: 1.75rem;
+}
+
+.json-formatter .hero-meta {
+  display: grid;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: var(--slate-600);
+}
+
+.json-formatter .hero-meta__label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate-600);
+}
+
 .json-formatter .eyebrow {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -44,6 +89,7 @@
   gap: 1.25rem;
   box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
   margin: 2rem auto;
+  flex-wrap: wrap;
 }
 
 .formatter-toolbar .btn {
@@ -59,19 +105,6 @@
 .formatter-toolbar .btn:focus {
   background: rgba(15, 23, 42, 0.08);
   color: var(--slate-900);
-}
-
-.formatter-toolbar .btn.btn-primary {
-  background: var(--slate-900);
-  border-color: var(--slate-900);
-  color: #fff;
-}
-
-.formatter-toolbar .btn.btn-primary:hover,
-.formatter-toolbar .btn.btn-primary:focus {
-  background: #050a1a;
-  border-color: #050a1a;
-  color: #fff;
 }
 
 .formatter-toolbar .btn.btn-outline-primary,

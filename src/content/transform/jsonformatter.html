@@ -8,20 +8,35 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
 <script src="/js/content/docs/formatter/json-formatter.js" defer></script>
 
 <section class="json-formatter container-xl">
-  <div class="formatter-hero text-center mx-auto">
-    <p class="eyebrow">Transform · Developer Utilities</p>
-    <h1 class="mb-3">JSON Formatter &amp; Validator</h1>
-    <p class="lead mb-4">Beautify raw JSON, uncover syntax errors, and ship readable payloads for documentation, pull requests, and API clients.</p>
-    <ul class="hero-meta list-unstyled d-flex flex-wrap justify-content-center gap-3 mb-0">
-      <li>Works entirely in your browser</li>
-      <li>Syntax validation on every run</li>
-      <li>Copy, minify, and tree view modes</li>
+  <div class="formatter-hero gradient-shell">
+    <div>
+      <p class="eyebrow">Transform · Developer Utilities</p>
+      <h1 class="mb-3">JSON Formatter &amp; Validator</h1>
+      <p class="lead mb-4">Beautify raw JSON, uncover syntax issues, and keep payloads consistent before they reach your repos, docs, or API gateways.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-dark" data-action="format">Format JSON</button>
+        <button type="button" class="btn btn-outline-dark" data-action="minify">Minify JSON</button>
+      </div>
+    </div>
+    <ul class="hero-meta list-unstyled mb-0">
+      <li>
+        <span class="hero-meta__label">Latency</span>
+        Instant, offline formatting
+      </li>
+      <li>
+        <span class="hero-meta__label">Validation</span>
+        Syntax errors highlighted inline
+      </li>
+      <li>
+        <span class="hero-meta__label">Views</span>
+        Text + collapsible tree output
+      </li>
     </ul>
   </div>
 
   <div class="formatter-toolbar d-flex flex-wrap align-items-center" role="group" aria-label="Formatter controls">
     <div class="btn-group" role="group" aria-label="Formatting actions">
-      <button type="button" class="btn btn-primary" data-action="format">Format JSON</button>
+      <button type="button" class="btn btn-outline-primary" data-action="format">Format JSON</button>
       <button type="button" class="btn btn-outline-primary" data-action="minify">Minify JSON</button>
       <button type="button" class="btn btn-outline-secondary" data-action="copy">Copy Result</button>
     </div>
