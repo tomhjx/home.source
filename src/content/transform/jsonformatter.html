@@ -34,12 +34,8 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <p class="text-uppercase text-muted small mb-0">View</p>
-            <div class="btn-group btn-group-sm view-toggle" role="group" aria-label="View mode">
-              <button type="button" class="btn btn-outline-primary btn-sm active" data-view="pretty">Formatted</button>
-              <button type="button" class="btn btn-outline-primary btn-sm" data-view="tree">Tree</button>
-            </div>
 
-          <div class="col-sm-4">
+
             <label class="form-label text-uppercase small text-muted mb-1" for="indent-size">Indent</label>
             <select id="indent-size" class="form-select form-select-sm">
               <option value="2">2 spaces</option>
@@ -52,7 +48,10 @@ keywords = ["JSON formatter", "JSON beautifier", "JSON validator", "JSON minifie
               <label class="form-check-label" for="sort-keys">Sort keys alphabetically</label>
             </div>
 
-          </div>
+          <div class="btn-group btn-group-sm view-toggle" role="group" aria-label="View mode">
+              <button type="button" class="btn btn-outline-primary btn-sm active" data-view="pretty">Formatted</button>
+              <button type="button" class="btn btn-outline-primary btn-sm" data-view="tree">Tree</button>
+            </div>
           </div>
           <textarea id="json-output" class="form-control flex-grow-1 mb-2" style="height: 500px;" readonly spellcheck="false" placeholder="Formatted JSON will appear here."></textarea>
           <div id="json-tree" class="json-tree border rounded" hidden></div>
