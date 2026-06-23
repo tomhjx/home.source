@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的人生 - 人生模拟器文字游戏</title>
+    <meta
+      name="description"
+      content="我的人生是一款浏览器人生模拟器文字游戏，通过身份设定、月度选择和随机人生事件，体验成长、事业、关系、健康与情绪交织的人生旅程。"
+    />
+    <meta
+      name="keywords"
+      content="我的人生,人生模拟器,人生模拟游戏,人生重开,文字游戏,人生选择游戏,模拟人生,成长模拟,人生规划,浏览器游戏,在线小游戏"
+    />
+    <meta name="author" content="我的人生" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="我的人生 - 人生模拟器文字游戏" />
+    <meta
+      property="og:description"
+      content="在我的人生中设定身份、做出每月选择，体验事业、关系、健康、情绪和资源变化带来的人生模拟。"
+    />
+    <meta property="og:site_name" content="我的人生" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="我的人生 - 人生模拟器文字游戏" />
+    <meta
+      name="twitter:description"
+      content="一款聚焦人生选择、成长和结局的浏览器人生模拟器文字游戏。"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%F0%9F%AA%BF%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="app-shell">
+      <section class="hero card">
+        <div>
+          <div class="hero-topline">
+            <p id="eyebrow-text" class="eyebrow">BROWSER LIFE SIM / TEXT GAME</p>
+            <div class="language-bar">
+              <span id="language-label" class="tip-label">LANGUAGE</span>
+              <div class="language-switcher-wrap">
+                <select id="language-switcher" class="language-switcher" aria-label="Language selector"></select>
+              </div>
+            </div>
+          </div>
+          <h1 id="hero-title">我的人生</h1>
+          <p id="hero-lead" class="lead">
+            这是一个聚焦“当下这一回合”的人生文字游戏。你先设定身份，再用每个月唯一的一次决定，把性别视角、生存环境、情绪和资源慢慢活成属于自己的样子。
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button id="open-identity-modal-button" class="ghost-button" type="button">编辑身份设定</button>
+          <button id="restart-button" class="ghost-button" type="button">按当前身份重开</button>
+          <div class="hero-tip">
+            <span id="goal-label" class="tip-label">当前目标</span>
+            <span id="goal-text">先活稳，再活好。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="focus-layout">
+        <article class="card month-card">
+          <div class="section-title">
+            <span id="current-month-label">当前月</span>
+            <span id="stage-indicator">先看清处境，再做决定</span>
+          </div>
+
+          <div class="month-header">
+            <div>
+              <p id="identity-pressure" class="pressure-line"></p>
+              <h2 id="story-title">你刚离开学校，站在城市边缘。</h2>
+              <p id="story-text" class="story-text"></p>
+            </div>
+            <div class="month-meta">
+              <div class="meta-pill" id="turn-indicator">第 1 个月</div>
+              <div class="meta-pill" id="age-indicator">18 岁 · 一月</div>
+            </div>
+          </div>
+
+          <div class="focus-action-box">
+            <p id="action-caption-text" class="action-caption">本月聚焦</p>
+            <div id="current-choice-summary" class="current-choice-summary"></div>
+            <button id="open-action-modal-button" class="primary-button focus-button" type="button">通过弹窗做出本月选择</button>
+          </div>
+        </article>
+
+        <aside class="card quick-card">
+          <div class="section-title">
+            <span id="current-base-label">当前底盘</span>
+            <span id="current-base-subtitle">只保留与你本轮决策最相关的信息</span>
+          </div>
+
+          <div id="profile-text" class="profile-text"></div>
+          <div id="profile-badges" class="profile-badges"></div>
+          <div id="focus-stats" class="focus-stats"></div>
+
+          <div class="meter-group compact-meters">
+            <div>
+              <label id="career-progress-label" for="progress-career">事业推进</label>
+              <progress id="progress-career" max="100" value="0"></progress>
+            </div>
+            <div>
+              <label id="life-progress-label" for="progress-life">人生满足</label>
+              <progress id="progress-life" max="100" value="0"></progress>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="detail-stack">
+        <details class="card detail-card">
+          <summary id="summary-identity-effects">展开身份余波</summary>
+          <div class="detail-body">
+            <div id="impact-list" class="impact-list"></div>
+          </div>
+        </details>
+
+        <details class="card detail-card">
+          <summary id="summary-life-log">展开人生账本</summary>
+          <div class="detail-body">
+            <ol id="log-list" class="log-list"></ol>
+          </div>
+        </details>
+
+        <details class="card detail-card">
+          <summary id="summary-longterm">展开长期提醒与结局</summary>
+          <div class="detail-body">
+            <ul id="hint-list" class="hint-list"></ul>
+            <div id="ending-panel" class="ending-panel hidden"></div>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <div id="identity-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="identity"></div>
+      <div class="modal-panel card">
+        <div class="modal-head">
+          <div>
+            <p id="identity-modal-eyebrow" class="eyebrow">IDENTITY SETUP</p>
+            <h2 id="identity-modal-title">用弹窗设定这一局你从哪里开始</h2>
+          </div>
+          <button id="identity-modal-close" class="icon-button" type="button" data-close-modal="identity">关闭</button>
+        </div>
+
+        <div class="modal-grid">
+          <article class="modal-section">
+            <p id="identity-gender-label" class="setup-label">性别视角</p>
+            <div id="setup-gender-list" class="option-list"></div>
+          </article>
+
+          <article class="modal-section">
+            <p id="identity-environment-label" class="setup-label">生存环境</p>
+            <div id="setup-environment-list" class="option-list"></div>
+          </article>
+        </div>
+
+        <article class="preview-block">
+          <p id="identity-preview-label" class="setup-label">开局预览</p>
+          <div id="setup-preview-body"></div>
+        </article>
+
+        <div class="modal-actions">
+          <button id="identity-modal-cancel" class="ghost-button" type="button" data-close-modal="identity">先不改</button>
+          <button id="apply-profile-button" class="primary-button" type="button">以这个身份开局</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="action-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="action"></div>
+      <div class="modal-panel card">
+        <div class="modal-head">
+          <div>
+            <p id="action-modal-eyebrow" class="eyebrow">MONTHLY CHOICE</p>
+            <h2 id="action-modal-title">这个月，你只做一个主决定</h2>
+          </div>
+          <button id="action-modal-close" class="icon-button" type="button" data-close-modal="action">关闭</button>
+        </div>
+
+        <article class="preview-block action-preview-block">
+          <p id="action-preview-label" class="setup-label">本次选择预览</p>
+          <div id="action-preview-body"></div>
+        </article>
+
+        <div id="action-list" class="option-list action-option-list"></div>
+
+        <div class="modal-actions">
+          <button id="action-modal-cancel" class="ghost-button" type="button" data-close-modal="action">再想想</button>
+          <button id="confirm-action-button" class="primary-button" type="button">确认这个月的决定</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
