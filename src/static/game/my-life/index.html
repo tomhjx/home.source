@@ -30,7 +30,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%F0%9F%AA%BF%3C/text%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=1782271906" />
   </head>
   <body>
     <div class="noise"></div>
@@ -53,8 +53,10 @@
         </div>
 
         <div class="hero-actions">
-          <button id="open-identity-modal-button" class="ghost-button" type="button">编辑身份设定</button>
-          <button id="restart-button" class="ghost-button" type="button">按当前身份重开</button>
+          <div class="top-control-row">
+            <button id="open-identity-modal-button" class="ghost-button" type="button">跳到身份设定</button>
+            <button id="restart-button" class="ghost-button" type="button">按当前身份重开</button>
+          </div>
           <div class="hero-tip">
             <span id="goal-label" class="tip-label">当前目标</span>
             <span id="goal-text">先活稳，再活好。</span>
@@ -62,8 +64,39 @@
         </div>
       </section>
 
-      <section class="focus-layout">
-        <article class="card month-card">
+      <section id="identity-setup-panel" class="card inline-setup-card sim-panel">
+        <div class="section-title">
+          <span id="inline-identity-title">开局设定</span>
+          <span id="inline-identity-subtitle">像人生重开一样，先选定这一局的底色</span>
+        </div>
+
+        <div id="identity-step-indicator" class="step-indicator"></div>
+
+        <div class="inline-setup-grid">
+          <article id="inline-gender-step" class="inline-section">
+            <p id="inline-identity-gender-label" class="setup-label">性别视角</p>
+            <div id="inline-setup-gender-list" class="option-list compact-option-list"></div>
+          </article>
+
+          <article id="inline-environment-step" class="inline-section">
+            <p id="inline-identity-environment-label" class="setup-label">生存环境</p>
+            <div id="inline-setup-environment-list" class="option-list compact-option-list"></div>
+          </article>
+        </div>
+
+        <article id="inline-identity-preview-step" class="preview-block inline-preview-block">
+          <p id="inline-identity-preview-label" class="setup-label">开局预览</p>
+          <div id="inline-setup-preview-body"></div>
+        </article>
+
+        <div class="inline-actions">
+          <button id="identity-step-back-button" class="ghost-button" type="button">上一步</button>
+          <button id="inline-apply-profile-button" class="primary-button" type="button">以这个身份开局</button>
+        </div>
+      </section>
+
+      <section id="game-panel" class="focus-layout sim-layout">
+        <article class="card month-card event-card">
           <div class="section-title">
             <span id="current-month-label">当前月</span>
             <span id="stage-indicator">先看清处境，再做决定</span>
@@ -81,14 +114,21 @@
             </div>
           </div>
 
-          <div class="focus-action-box">
+          <div class="focus-action-box choice-panel">
             <p id="action-caption-text" class="action-caption">本月聚焦</p>
             <div id="current-choice-summary" class="current-choice-summary"></div>
-            <button id="open-action-modal-button" class="primary-button focus-button" type="button">通过弹窗做出本月选择</button>
+            <div id="action-step-indicator" class="step-indicator"></div>
+            <div id="inline-action-list" class="option-list action-option-list compact-option-list"></div>
+            <article class="preview-block action-preview-block inline-action-preview">
+              <p id="inline-action-preview-label" class="setup-label">本次选择预览</p>
+              <div id="inline-action-preview-body"></div>
+            </article>
+            <button id="action-step-back-button" class="ghost-button focus-button" type="button">重选本月行动</button>
+            <button id="open-action-modal-button" class="primary-button focus-button" type="button">确认本月选择并继续</button>
           </div>
         </article>
 
-        <aside class="card quick-card">
+        <aside class="card quick-card status-card">
           <div class="section-title">
             <span id="current-base-label">当前底盘</span>
             <span id="current-base-subtitle">只保留与你本轮决策最相关的信息</span>
@@ -111,18 +151,18 @@
         </aside>
       </section>
 
-      <section class="detail-stack">
-        <details class="card detail-card">
-          <summary id="summary-identity-effects">展开身份余波</summary>
+      <section class="detail-stack journal-stack">
+        <details class="card detail-card" open>
+          <summary id="summary-life-log">展开人生账本</summary>
           <div class="detail-body">
-            <div id="impact-list" class="impact-list"></div>
+            <ol id="log-list" class="log-list"></ol>
           </div>
         </details>
 
         <details class="card detail-card">
-          <summary id="summary-life-log">展开人生账本</summary>
+          <summary id="summary-identity-effects">展开身份余波</summary>
           <div class="detail-body">
-            <ol id="log-list" class="log-list"></ol>
+            <div id="impact-list" class="impact-list"></div>
           </div>
         </details>
 
@@ -196,6 +236,6 @@
       </div>
     </div>
 
-    <script src="./game.js"></script>
+    <script src="./game.js?v=1782271906"></script>
   </body>
 </html>

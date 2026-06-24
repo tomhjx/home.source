@@ -53,16 +53,25 @@ const TEXT = {
       "这是一个聚焦“当下这一回合”的人生文字游戏。你先设定身份，再用每个月唯一的一次决定，把性别视角、生存环境、情绪和资源慢慢活成属于自己的样子。",
     ui: {
       editIdentity: "编辑身份设定",
-      restart: "按当前身份重开",
+      restart: "立即重开",
+      inlineIdentityTitle: "重开人生",
+      inlineIdentitySubtitle: "先抽取这一世的视角与出身，再进入第一段剧情",
+      jumpIdentity: "重新开局",
+      stepGender: "视角",
+      stepEnvironment: "出身",
+      stepPreview: "开局",
+      stepAction: "选择行动",
+      stepBack: "上一步",
+      reselectAction: "重新选择",
       goalLabel: "当前目标",
-      currentMonth: "当前月",
-      stageActive: "先看处境，再通过弹窗做决定",
+      currentMonth: "人生事件",
+      stageActive: "阅读事件，然后选择行动",
       stageEnded: "这一局已经结算",
-      actionCaption: "本月聚焦",
-      openAction: "通过弹窗做出本月选择",
+      actionCaption: "你要怎么做？",
+      openAction: "继续下一个事件",
       endedButton: "本局已结算",
-      currentBase: "当前底盘",
-      currentBaseSubtitle: "只保留与你本轮决策最相关的信息",
+      currentBase: "角色状态",
+      currentBaseSubtitle: "主流人生模拟会始终展示关键属性",
       progressCareer: "事业推进",
       progressLife: "人生满足",
       summaryIdentityEffects: "展开身份余波",
@@ -256,16 +265,25 @@ const TEXT = {
       "這是一個聚焦「當下這一回合」的人生文字遊戲。你先設定身份，再用每個月唯一的一次決定，把性別視角、生存環境、情緒與資源慢慢活成屬於自己的樣子。",
     ui: {
       editIdentity: "編輯身份設定",
-      restart: "按目前身份重開",
+      restart: "立即重開",
+      inlineIdentityTitle: "重開人生",
+      inlineIdentitySubtitle: "先抽取這一世的視角與出身，再進入第一段劇情",
+      jumpIdentity: "重新開局",
+      stepGender: "視角",
+      stepEnvironment: "出身",
+      stepPreview: "開局",
+      stepAction: "選擇行動",
+      stepBack: "上一步",
+      reselectAction: "重新選擇",
       goalLabel: "目前目標",
-      currentMonth: "當前月份",
-      stageActive: "先看清處境，再透過彈窗做決定",
+      currentMonth: "人生事件",
+      stageActive: "閱讀事件，然後選擇行動",
       stageEnded: "這一局已經結算",
-      actionCaption: "本月聚焦",
-      openAction: "透過彈窗做出本月選擇",
+      actionCaption: "你要怎麼做？",
+      openAction: "繼續下一個事件",
       endedButton: "本局已結算",
-      currentBase: "目前底盤",
-      currentBaseSubtitle: "只保留與你這輪決策最相關的資訊",
+      currentBase: "角色狀態",
+      currentBaseSubtitle: "主流人生模擬會始終展示關鍵屬性",
       progressCareer: "事業推進",
       progressLife: "人生滿足",
       summaryIdentityEffects: "展開身份餘波",
@@ -459,16 +477,25 @@ const TEXT = {
       "This is a life text game focused on the current turn. You set your identity first, then use the single decision you get each month to slowly turn gender perspective, living environment, emotions, and resources into a life that feels like your own.",
     ui: {
       editIdentity: "Edit identity setup",
-      restart: "Restart with current identity",
+      restart: "Restart now",
+      inlineIdentityTitle: "Restart life",
+      inlineIdentitySubtitle: "Pick this run’s perspective and origin before the first event",
+      jumpIdentity: "Restart setup",
+      stepGender: "Perspective",
+      stepEnvironment: "Origin",
+      stepPreview: "Start",
+      stepAction: "Choose action",
+      stepBack: "Back",
+      reselectAction: "Choose again",
       goalLabel: "Current goal",
-      currentMonth: "Current month",
-      stageActive: "Read the situation first, then decide through the modal",
+      currentMonth: "Life event",
+      stageActive: "Read the event, then choose an action",
       stageEnded: "This life has been settled",
-      actionCaption: "Monthly focus",
-      openAction: "Make this month's choice through the modal",
+      actionCaption: "What will you do?",
+      openAction: "Continue to next event",
       endedButton: "This run is settled",
-      currentBase: "Current baseline",
-      currentBaseSubtitle: "Only the information most relevant to this turn stays visible",
+      currentBase: "Character status",
+      currentBaseSubtitle: "Mainstream life sims keep core attributes visible",
       progressCareer: "Career progress",
       progressLife: "Life satisfaction",
       summaryIdentityEffects: "Expand identity aftershocks",
@@ -665,6 +692,17 @@ const elements = {
   currentMonthLabel: document.querySelector("#current-month-label"),
   stageIndicator: document.querySelector("#stage-indicator"),
   actionCaptionText: document.querySelector("#action-caption-text"),
+  identitySetupPanel: document.querySelector("#identity-setup-panel"),
+  gamePanel: document.querySelector("#game-panel"),
+  inlineIdentityTitle: document.querySelector("#inline-identity-title"),
+  inlineIdentitySubtitle: document.querySelector("#inline-identity-subtitle"),
+  identityStepIndicator: document.querySelector("#identity-step-indicator"),
+  inlineGenderStep: document.querySelector("#inline-gender-step"),
+  inlineEnvironmentStep: document.querySelector("#inline-environment-step"),
+  inlineIdentityPreviewStep: document.querySelector("#inline-identity-preview-step"),
+  inlineIdentityGenderLabel: document.querySelector("#inline-identity-gender-label"),
+  inlineIdentityEnvironmentLabel: document.querySelector("#inline-identity-environment-label"),
+  inlineIdentityPreviewLabel: document.querySelector("#inline-identity-preview-label"),
   currentBaseLabel: document.querySelector("#current-base-label"),
   currentBaseSubtitle: document.querySelector("#current-base-subtitle"),
   careerProgressLabel: document.querySelector("#career-progress-label"),
@@ -703,12 +741,22 @@ const elements = {
   openIdentityModalButton: document.querySelector("#open-identity-modal-button"),
   openActionModalButton: document.querySelector("#open-action-modal-button"),
   applyProfileButton: document.querySelector("#apply-profile-button"),
+  inlineApplyProfileButton: document.querySelector("#inline-apply-profile-button"),
   confirmActionButton: document.querySelector("#confirm-action-button"),
   setupGenderList: document.querySelector("#setup-gender-list"),
   setupEnvironmentList: document.querySelector("#setup-environment-list"),
   setupPreviewBody: document.querySelector("#setup-preview-body"),
+  inlineSetupGenderList: document.querySelector("#inline-setup-gender-list"),
+  inlineSetupEnvironmentList: document.querySelector("#inline-setup-environment-list"),
+  inlineSetupPreviewBody: document.querySelector("#inline-setup-preview-body"),
   actionList: document.querySelector("#action-list"),
   actionPreviewBody: document.querySelector("#action-preview-body"),
+  actionStepIndicator: document.querySelector("#action-step-indicator"),
+  inlineActionList: document.querySelector("#inline-action-list"),
+  inlineActionPreviewLabel: document.querySelector("#inline-action-preview-label"),
+  inlineActionPreviewBody: document.querySelector("#inline-action-preview-body"),
+  identityStepBackButton: document.querySelector("#identity-step-back-button"),
+  actionStepBackButton: document.querySelector("#action-step-back-button"),
   identityModal: document.querySelector("#identity-modal"),
   actionModal: document.querySelector("#action-modal"),
 };
@@ -716,6 +764,9 @@ const elements = {
 const uiState = {
   identityModalOpen: false,
   actionModalOpen: false,
+  identityStep: "gender",
+  actionStep: "choose",
+  setupMode: "auto",
   draftActionKey: DEFAULT_ACTION,
 };
 
@@ -935,6 +986,7 @@ function createState({ genderKey = DEFAULT_GENDER, environmentKey = DEFAULT_ENVI
     lastEffects: [],
     currentEvent: buildIntroEvent(gender.key, environment.key),
     log: [],
+    hasStarted: false,
     ended: false,
     endingKey: null,
   };
@@ -967,6 +1019,7 @@ function loadState() {
       log: Array.isArray(parsed.log) ? parsed.log.map(normalizeLogEntry) : seeded.log,
       lastEffects: Array.isArray(parsed.lastEffects) ? parsed.lastEffects : [],
       currentEvent: parsed.currentEvent ?? seeded.currentEvent,
+      hasStarted: Boolean(parsed.hasStarted ?? parsed.lastActionKey ?? parsed.turn > 1),
       endingKey: parsed.endingKey ?? null,
     };
   } catch {
@@ -1109,25 +1162,25 @@ function buildPressureLine() {
 function buildCurrentChoiceSummary() {
   if (state.ended) {
     return appLanguage === "en"
-      ? "This life has already been settled. You can restart, or reconfigure your identity and test a different path next run."
+      ? "This life has ended. Review the journal below, then restart to try a different route."
       : appLanguage === "zh-TW"
-        ? "這局人生已經結算。你可以重開，或重新設定身份後，用下一局驗證另一種活法。"
-        : "这局人生已经结算。你可以重开，或者重新设定身份后，再用下一局验证另一种活法。";
+        ? "這一世已經結束。先看下方人生紀錄，再重開嘗試另一條路線。"
+        : "这一世已经结束。先看下方人生记录，再重开尝试另一条路线。";
   }
 
   if (!state.lastActionKey) {
     if (state.turn > 1) {
       return appLanguage === "en"
-        ? "This save is already in progress. You can use the modal right away to make the next main decision for the current month."
+        ? "A new event is waiting. Pick one action card, read the preview, then continue your life."
         : appLanguage === "zh-TW"
-          ? "這是一個已經進行中的存檔。你可以直接透過彈窗，為當前這個月做新的主決定。"
-          : "这是一个已经进行中的存档。你可以直接通过弹窗，为当前这个月做新的主决定。";
+          ? "新的事件正在等你。選一張行動卡，讀完預告後繼續人生。"
+          : "新的事件正在等你。选一张行动卡，读完预告后继续人生。";
     }
     return appLanguage === "en"
-      ? "You have not made the first decision of this life yet. Open the modal and choose a direction whose consequences you are willing to carry."
+      ? "This is your first event. Choose one action card to decide how this life begins."
       : appLanguage === "zh-TW"
-        ? "你還沒為這一局做出第一個月的決定。先打開彈窗，挑一個你願意承擔後果的方向。"
-        : "你还没为这一局做出第一个月的决定。先打开弹窗，挑一个你愿意承担后果的方向。";
+        ? "這是你的第一個事件。選一張行動卡，決定這一世如何開始。"
+        : "这是你的第一个事件。选一张行动卡，决定这一世如何开始。";
   }
 
   const action = getActionDefinition(state.lastActionKey);
@@ -1144,10 +1197,10 @@ function buildCurrentChoiceSummary() {
         : "这次没有额外的身份余波。";
 
   return appLanguage === "en"
-    ? `Last month, you gave the main line to “${action.title}.” ${notes}`
+    ? `Previous choice: “${action.title}.” ${notes}`
     : appLanguage === "zh-TW"
-      ? `上個月你把主線交給了「${action.title}」。${notes}`
-      : `上个月你把主线交给了「${action.title}」。${notes}`;
+      ? `上一個選擇：「${action.title}」。${notes}`
+      : `上一个选择：「${action.title}」。${notes}`;
 }
 
 function buildMonthlyAtmosphere() {
@@ -1310,8 +1363,13 @@ function renderStaticText() {
   elements.languageLabel.textContent = pack.languageLabel;
   elements.heroTitle.textContent = pack.heroTitle;
   elements.heroLead.textContent = pack.heroLead;
-  elements.openIdentityModalButton.textContent = pack.ui.editIdentity;
+  elements.openIdentityModalButton.textContent = pack.ui.jumpIdentity;
   elements.restartButton.textContent = pack.ui.restart;
+  elements.inlineIdentityTitle.textContent = pack.ui.inlineIdentityTitle;
+  elements.inlineIdentitySubtitle.textContent = pack.ui.inlineIdentitySubtitle;
+  elements.inlineIdentityGenderLabel.textContent = pack.ui.identityGender;
+  elements.inlineIdentityEnvironmentLabel.textContent = pack.ui.identityEnvironment;
+  elements.inlineIdentityPreviewLabel.textContent = pack.ui.identityPreview;
   elements.goalLabel.textContent = pack.ui.goalLabel;
   elements.currentMonthLabel.textContent = pack.ui.currentMonth;
   elements.actionCaptionText.textContent = pack.ui.actionCaption;
@@ -1333,6 +1391,7 @@ function renderStaticText() {
   elements.actionModalTitle.textContent = pack.ui.actionTitle;
   elements.actionModalClose.textContent = pack.ui.close;
   elements.actionPreviewLabel.textContent = pack.ui.actionPreview;
+  elements.inlineActionPreviewLabel.textContent = pack.ui.actionPreview;
   elements.actionModalCancel.textContent = pack.ui.thinkAgain;
   elements.confirmActionButton.textContent = pack.ui.confirmAction;
   elements.hintList.innerHTML = "";
@@ -1399,21 +1458,143 @@ function renderLog() {
 function renderOptionGroup(container, items, selectedKey, onSelect, type) {
   container.innerHTML = "";
   const pack = getPack();
-  items.forEach((item) => {
+  items.forEach((item, index) => {
     const translated = type === "gender" ? getGenderDefinition(item.key) : type === "environment" ? getEnvironmentDefinition(item.key) : getActionDefinition(item.key);
+    const actionPreview = type === "action" ? buildActionOptionPreview(translated) : "";
     const button = document.createElement("button");
     button.type = "button";
     button.className = `option-button${selectedKey === item.key ? " is-selected" : ""}`;
     button.innerHTML = `
       <div class="option-head">
-        <strong>${translated.label ?? translated.title}</strong>
+        <strong><span class="choice-number">${index + 1}</span>${translated.label ?? translated.title}</strong>
         <span class="option-kicker">${selectedKey === item.key ? pack.ui.optionSelected : pack.ui.optionAvailable}</span>
       </div>
       <p>${translated.brief ?? translated.description}</p>
+      ${actionPreview}
     `;
     button.addEventListener("click", () => onSelect(item.key));
     container.appendChild(button);
   });
+}
+
+function buildActionOptionPreview(action) {
+  const pack = getPack();
+  const previewNotes = previewEffectsForAction(action.key);
+  const aftereffects = previewNotes.length > 0
+    ? previewNotes.join(" / ")
+    : appLanguage === "en"
+      ? "No strong extra bias this time."
+      : appLanguage === "zh-TW"
+        ? "這次不會觸發明顯的額外偏置。"
+        : "这次不会触发明显的额外偏置。";
+  const hintLabel = appLanguage === "en" ? "Tendency" : appLanguage === "zh-TW" ? "傾向" : "倾向";
+  const aftereffectLabel = appLanguage === "en" ? "Aftereffect" : appLanguage === "zh-TW" ? "餘波" : "余波";
+
+  return `
+    <div class="option-preview-lines">
+      <span><strong>${escapeHtml(pack.ui.forecastLabel)}：</strong>${escapeHtml(buildActionForecast(action.key))}</span>
+      <span><strong>${hintLabel}：</strong>${escapeHtml(action.hint)}</span>
+      <span><strong>${aftereffectLabel}：</strong>${escapeHtml(aftereffects)}</span>
+    </div>
+  `;
+}
+
+function renderStepIndicator(container, steps, activeKey) {
+  container.innerHTML = steps.map((step) => {
+    const stateClass = step.key === activeKey ? " is-active" : step.done ? " is-done" : "";
+    return `<span class="step-pill${stateClass}">${escapeHtml(step.label)}</span>`;
+  }).join("");
+}
+
+function setVisibleStep(element, visible) {
+  element.classList.toggle("step-panel-hidden", !visible);
+}
+
+function resetProgressiveSteps() {
+  uiState.identityStep = "gender";
+  uiState.actionStep = "choose";
+  uiState.draftActionKey = DEFAULT_ACTION;
+}
+
+function isFreshRun() {
+  return state.hasStarted !== true;
+}
+
+function isSetupVisible() {
+  if (uiState.setupMode === "setup") return true;
+  if (uiState.setupMode === "game") return false;
+  return isFreshRun();
+}
+
+function showSetupScreen() {
+  uiState.setupMode = "setup";
+  uiState.identityStep = "gender";
+  renderStatus();
+  elements.identitySetupPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function showGameScreen() {
+  uiState.setupMode = "game";
+  renderStatus();
+  elements.gamePanel.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderInlineIdentitySetup() {
+  renderOptionGroup(elements.inlineSetupGenderList, genderDefinitions, state.draftGender, (key) => {
+    state.draftGender = key;
+    uiState.identityStep = "environment";
+    saveState();
+    renderStatus();
+  }, "gender");
+
+  renderOptionGroup(elements.inlineSetupEnvironmentList, environmentDefinitions, state.draftEnvironment, (key) => {
+    state.draftEnvironment = key;
+    uiState.identityStep = "preview";
+    saveState();
+    renderStatus();
+  }, "environment");
+
+  const gender = getGenderDefinition(state.draftGender);
+  const environment = getEnvironmentDefinition(state.draftEnvironment);
+  const pending = state.draftGender !== state.selectedGender || state.draftEnvironment !== state.selectedEnvironment;
+  const pendingText = appLanguage === "en"
+    ? "Starting will reset the journal and enter the first life event."
+    : appLanguage === "zh-TW"
+      ? "開始後會清空本世紀錄，進入第一個人生事件。"
+      : "开始后会清空本世记录，进入第一个人生事件。";
+  const activeText = appLanguage === "en"
+    ? "This is the current character setup. Restarting from it creates a fresh run."
+    : appLanguage === "zh-TW"
+      ? "這就是目前角色設定；用它重開會建立一個全新人生。"
+      : "这就是当前角色设定；用它重开会建立一个全新人生。";
+  const monthlyCostText = appLanguage === "en"
+    ? `Starting survival cost: ${formatMoney(getMonthlyLivingCost({ selectedEnvironment: state.draftEnvironment }))} / month`
+    : appLanguage === "zh-TW"
+      ? `初始生存成本：${formatMoney(getMonthlyLivingCost({ selectedEnvironment: state.draftEnvironment }))} / 月`
+      : `初始生存成本：${formatMoney(getMonthlyLivingCost({ selectedEnvironment: state.draftEnvironment }))} / 月`;
+
+  renderStepIndicator(elements.identityStepIndicator, [
+    { key: "gender", label: getPack().ui.stepGender, done: uiState.identityStep !== "gender" },
+    { key: "environment", label: getPack().ui.stepEnvironment, done: uiState.identityStep === "preview" },
+    { key: "preview", label: getPack().ui.stepPreview, done: false },
+  ], uiState.identityStep);
+
+  setVisibleStep(elements.inlineGenderStep, uiState.identityStep === "gender");
+  setVisibleStep(elements.inlineEnvironmentStep, uiState.identityStep === "environment");
+  setVisibleStep(elements.inlineIdentityPreviewStep, uiState.identityStep === "preview");
+  elements.identityStepBackButton.classList.toggle("hidden", uiState.identityStep === "gender");
+  elements.inlineApplyProfileButton.classList.toggle("hidden", uiState.identityStep !== "preview");
+
+  elements.inlineSetupPreviewBody.innerHTML = `
+    <strong class="preview-title">${gender.label} × ${environment.label}</strong>
+    <p class="preview-copy">${gender.trait} ${environment.trait}</p>
+    <ul class="preview-list">
+      <li>${monthlyCostText}</li>
+      <li>${pending ? pendingText : activeText}</li>
+    </ul>
+  `;
+  elements.identityStepBackButton.textContent = getPack().ui.stepBack;
+  elements.inlineApplyProfileButton.textContent = pending ? (appLanguage === "en" ? "Start life" : appLanguage === "zh-TW" ? "開始人生" : "开始人生") : getPack().ui.restart;
 }
 
 function renderIdentityModal() {
@@ -1491,6 +1672,61 @@ function renderActionModal() {
   elements.confirmActionButton.textContent = pack.ui.confirmAction;
 }
 
+function renderInlineActionChooser() {
+  const pack = getPack();
+  const isChoosing = !state.ended && uiState.actionStep === "choose";
+  const isOutcome = !state.ended && uiState.actionStep === "outcome";
+  if (isChoosing) {
+    renderOptionGroup(elements.inlineActionList, actionDefinitions, uiState.draftActionKey, (key) => {
+      uiState.draftActionKey = key;
+      takeAction(key);
+    }, "action");
+  } else {
+    elements.inlineActionList.innerHTML = "";
+  }
+
+  renderStepIndicator(elements.actionStepIndicator, [
+    { key: "choose", label: pack.ui.stepAction, done: isOutcome },
+    { key: "outcome", label: appLanguage === "en" ? "Result" : appLanguage === "zh-TW" ? "結果" : "结果", done: false },
+  ], uiState.actionStep);
+
+  setVisibleStep(elements.inlineActionList, isChoosing);
+  elements.inlineActionPreviewBody.parentElement.classList.toggle("step-panel-hidden", !isOutcome);
+  elements.actionStepBackButton.classList.add("hidden");
+  elements.openActionModalButton.classList.toggle("hidden", !isOutcome);
+  elements.actionStepBackButton.textContent = pack.ui.stepBack;
+  elements.inlineActionPreviewBody.innerHTML = isOutcome ? buildActionOutcomeHtml() : "";
+}
+
+function buildActionOutcomeHtml() {
+  if (state.currentEvent?.kind !== "action") return "";
+  const action = getActionDefinition(state.currentEvent.actionKey);
+  const result = translateResult(state.currentEvent.result);
+  const notes = state.currentEvent.noteKeys?.length
+    ? state.currentEvent.noteKeys.map(translateNote).join(" / ")
+    : appLanguage === "en"
+      ? "No extra aftereffect this month."
+      : appLanguage === "zh-TW"
+        ? "本月沒有額外餘波。"
+        : "本月没有额外余波。";
+  const actionLabel = appLanguage === "en" ? "Your choice" : appLanguage === "zh-TW" ? "你的選擇" : "你的选择";
+  const aftereffectLabel = appLanguage === "en" ? "Aftereffect" : appLanguage === "zh-TW" ? "餘波" : "余波";
+  const changeLabel = getPack().ui.changeLabel;
+
+  return `
+    <strong class="preview-title">${escapeHtml(result.title)}</strong>
+    <p class="preview-copy">${escapeHtml(result.story)}</p>
+    <div class="outcome-facts">
+      <span><strong>${actionLabel}：</strong>${escapeHtml(action.title)}</span>
+      <span><strong>${aftereffectLabel}：</strong>${escapeHtml(notes)}</span>
+    </div>
+    <div class="change-summary outcome-change-summary">
+      <span class="change-label">${escapeHtml(changeLabel)}</span>
+      ${renderChangeSummary(state.currentEvent.changes ?? [])}
+    </div>
+  `;
+}
+
 function renderEnding() {
   if (!state.ended || !state.endingKey) {
     elements.endingPanel.classList.add("hidden");
@@ -1511,13 +1747,27 @@ function renderModalVisibility() {
   elements.actionModal.setAttribute("aria-hidden", String(!uiState.actionModalOpen));
 }
 
+function renderFocusedChoiceMode(setupVisible) {
+  const inSetupChoice = setupVisible && (uiState.identityStep === "gender" || uiState.identityStep === "environment");
+  const inActionChoice = !setupVisible && !state.ended && uiState.actionStep === "choose";
+  const inActionOutcome = !setupVisible && !state.ended && uiState.actionStep === "outcome";
+  elements.body.classList.toggle("choice-focus-mode", inSetupChoice || inActionChoice);
+  elements.body.classList.toggle("setup-choice-focus", inSetupChoice);
+  elements.body.classList.toggle("action-choice-focus", inActionChoice);
+  elements.body.classList.toggle("action-outcome-mode", inActionOutcome);
+}
+
 function renderStatus() {
   renderStaticText();
   updateTitle();
   const gender = getGenderDefinition(state.selectedGender);
   const environment = getEnvironmentDefinition(state.selectedEnvironment);
   const eventText = eventTitleAndStory(state.currentEvent);
+  const setupVisible = isSetupVisible();
 
+  elements.identitySetupPanel.classList.toggle("screen-hidden", !setupVisible);
+  elements.gamePanel.classList.toggle("screen-hidden", setupVisible);
+  renderFocusedChoiceMode(setupVisible);
   elements.turnIndicator.textContent = appLanguage === "en" ? `Month ${state.turn}` : appLanguage === "zh-TW" ? `第 ${state.turn} 個月` : `第 ${state.turn} 个月`;
   elements.ageIndicator.textContent = appLanguage === "en" ? `${state.age} · ${getMonths()[state.monthIndex]}` : `${state.age} ${appLanguage === "zh-TW" ? "歲" : "岁"} · ${getMonths()[state.monthIndex]}`;
   elements.stageIndicator.textContent = state.ended ? getPack().ui.stageEnded : getPack().ui.stageActive;
@@ -1543,6 +1793,7 @@ function renderStatus() {
   elements.openActionModalButton.disabled = state.ended;
   elements.openActionModalButton.textContent = state.ended ? getPack().ui.endedButton : getPack().ui.openAction;
 
+  renderInlineIdentitySetup();
   renderProfileBadges();
   renderFocusStats();
   renderImpactList();
@@ -1550,13 +1801,8 @@ function renderStatus() {
   renderEnding();
   renderIdentityModal();
   renderActionModal();
+  renderInlineActionChooser();
   renderModalVisibility();
-}
-
-function openModal(type) {
-  if (type === "identity") uiState.identityModalOpen = true;
-  if (type === "action") uiState.actionModalOpen = true;
-  renderStatus();
 }
 
 function closeModal(type) {
@@ -1735,6 +1981,7 @@ function takeAction(actionKey) {
     maybeMilestone();
     checkEnding();
   }
+  uiState.actionStep = state.ended ? "ended" : "outcome";
   closeModal("action");
   saveState();
   renderStatus();
@@ -1742,7 +1989,9 @@ function takeAction(actionKey) {
 
 function restartGame() {
   state = createState({ genderKey: state.draftGender, environmentKey: state.draftEnvironment });
-  uiState.draftActionKey = DEFAULT_ACTION;
+  state.hasStarted = true;
+  resetProgressiveSteps();
+  uiState.setupMode = "game";
   saveState();
   renderStatus();
 }
@@ -1761,11 +2010,27 @@ elements.languageSwitcher.addEventListener("change", (event) => {
   const nextLanguage = event.target.value;
   setLanguage(nextLanguage);
 });
-elements.openIdentityModalButton.addEventListener("click", () => openModal("identity"));
-elements.openActionModalButton.addEventListener("click", () => openModal("action"));
+elements.openIdentityModalButton.addEventListener("click", showSetupScreen);
+elements.openActionModalButton.addEventListener("click", () => {
+  uiState.actionStep = "choose";
+  saveState();
+  renderStatus();
+});
 elements.applyProfileButton.addEventListener("click", () => {
   closeModal("identity");
   restartGame();
+});
+elements.inlineApplyProfileButton.addEventListener("click", () => {
+  restartGame();
+  showGameScreen();
+});
+elements.identityStepBackButton.addEventListener("click", () => {
+  uiState.identityStep = uiState.identityStep === "preview" ? "environment" : "gender";
+  renderStatus();
+});
+elements.actionStepBackButton.addEventListener("click", () => {
+  uiState.actionStep = "choose";
+  renderStatus();
 });
 elements.confirmActionButton.addEventListener("click", () => takeAction(uiState.draftActionKey));
 
