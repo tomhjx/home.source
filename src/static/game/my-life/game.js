@@ -1750,15 +1750,18 @@ function renderModalVisibility() {
 }
 
 function renderStatusCollapse() {
-  const collapseText = appLanguage === "en" ? "Collapse" : appLanguage === "zh-TW" ? "收起" : "收起";
   const expandText = appLanguage === "en" ? "Status" : appLanguage === "zh-TW" ? "狀態" : "状态";
+  const collapseLabel = appLanguage === "en" ? "Close character status" : appLanguage === "zh-TW" ? "收起角色狀態" : "收起角色状态";
+  const expandLabel = appLanguage === "en" ? "Open character status" : appLanguage === "zh-TW" ? "展開角色狀態" : "展开角色状态";
   const needsAttention = state.money < getMonthlyLivingCost() || state.health < 40 || state.mood < 40 || state.energy < 35 || state.stress > 70 || getLifeScore() < 42;
   const attentionLabel = appLanguage === "en" ? "needs attention" : appLanguage === "zh-TW" ? "有指標需要關注" : "有指标需要关注";
+  const buttonLabel = uiState.statusCollapsed ? expandLabel : collapseLabel;
   elements.body.classList.toggle("status-collapsed", uiState.statusCollapsed);
   elements.body.classList.toggle("status-needs-attention", needsAttention);
-  elements.statusCollapseButton.textContent = uiState.statusCollapsed ? expandText : collapseText;
+  elements.statusCollapseButton.textContent = uiState.statusCollapsed ? expandText : "×";
   elements.statusCollapseButton.setAttribute("aria-expanded", String(!uiState.statusCollapsed));
-  elements.statusCollapseButton.setAttribute("aria-label", needsAttention ? `${elements.statusCollapseButton.textContent}，${attentionLabel}` : elements.statusCollapseButton.textContent);
+  elements.statusCollapseButton.setAttribute("aria-label", needsAttention ? `${buttonLabel}，${attentionLabel}` : buttonLabel);
+  elements.statusCollapseButton.title = buttonLabel;
 }
 
 function renderFocusedChoiceMode(setupVisible) {

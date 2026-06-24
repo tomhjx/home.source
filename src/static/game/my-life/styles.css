@@ -633,6 +633,7 @@ body.status-collapsed .status-content {
 
 .status-card .section-title {
   margin-bottom: 12px;
+  padding-right: 42px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -655,27 +656,42 @@ body.status-collapsed .status-content {
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: -40px;
-  top: 18px;
-  width: 40px;
-  min-height: 72px;
+  right: 14px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
   border: 1px solid rgba(255, 212, 138, 0.28);
-  background: linear-gradient(180deg, rgba(255, 212, 138, 0.2), rgba(240, 179, 91, 0.12));
+  background: rgba(255, 255, 255, 0.06);
   color: var(--accent-strong);
-  border-radius: 0 16px 16px 0;
-  padding: 10px 7px;
+  border-radius: 999px;
+  padding: 0;
   cursor: pointer;
   font-weight: 700;
-  writing-mode: vertical-rl;
-  letter-spacing: 0.08em;
-  box-shadow: 10px 12px 30px rgba(0, 0, 0, 0.28);
+  font-size: 1.2rem;
+  line-height: 1;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.status-collapse-button:hover,
+.status-collapse-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(255, 212, 138, 0.48);
+  background: rgba(255, 212, 138, 0.12);
 }
 
 body.status-collapsed .status-collapse-button {
   right: auto;
   left: 0;
   top: 0;
+  width: auto;
+  min-width: 48px;
+  height: 38px;
+  padding: 0 12px;
   border-radius: 0 16px 16px 0;
+  background: linear-gradient(180deg, rgba(255, 212, 138, 0.2), rgba(240, 179, 91, 0.12));
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
 }
 
 body.status-needs-attention.status-collapsed .status-collapse-button::after {
