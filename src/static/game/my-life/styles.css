@@ -550,7 +550,7 @@ body.action-outcome-mode .choice-panel {
 
 @media (max-width: 920px) {
   body.action-outcome-mode #open-action-modal-button {
-    bottom: calc(min(48vh, 380px) + 22px);
+    bottom: 16px;
     width: min(720px, calc(100vw - 32px));
   }
 }
@@ -600,7 +600,7 @@ body.choice-focus-mode .action-option-list {
 
 .status-card {
   position: fixed;
-  right: 18px;
+  left: 18px;
   top: 88px;
   z-index: 12;
   width: min(340px, calc(100vw - 36px));
@@ -613,6 +613,22 @@ body.choice-focus-mode .action-option-list {
     linear-gradient(180deg, rgba(21, 29, 43, 0.98), rgba(10, 15, 23, 0.98));
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(255, 212, 138, 0.08);
   backdrop-filter: blur(14px);
+}
+
+body.status-collapsed .status-card {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.status-collapsed .status-card .section-title,
+body.status-collapsed .status-content {
+  display: none;
 }
 
 .status-card .section-title {
@@ -632,6 +648,50 @@ body.choice-focus-mode .action-option-list {
   color: var(--subtle);
   letter-spacing: 0;
   text-transform: none;
+}
+
+.status-collapse-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -40px;
+  top: 18px;
+  width: 40px;
+  min-height: 72px;
+  border: 1px solid rgba(255, 212, 138, 0.28);
+  background: linear-gradient(180deg, rgba(255, 212, 138, 0.2), rgba(240, 179, 91, 0.12));
+  color: var(--accent-strong);
+  border-radius: 0 16px 16px 0;
+  padding: 10px 7px;
+  cursor: pointer;
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.08em;
+  box-shadow: 10px 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+body.status-collapsed .status-collapse-button {
+  right: auto;
+  left: 0;
+  top: 0;
+  border-radius: 0 16px 16px 0;
+}
+
+body.status-needs-attention.status-collapsed .status-collapse-button::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--danger);
+  box-shadow: 0 0 0 4px rgba(255, 122, 112, 0.18), 0 0 18px rgba(255, 122, 112, 0.8);
+}
+
+.status-content {
+  display: block;
 }
 
 .profile-text {
@@ -923,11 +983,12 @@ body.modal-open {
   }
 
   .status-card {
-    top: auto;
-    right: 10px;
-    bottom: 10px;
-    width: min(360px, calc(100vw - 20px));
-    max-height: min(48vh, 400px);
+    top: 50%;
+    left: 10px;
+    right: auto;
+    transform: translateY(-50%);
+    width: min(340px, calc(100vw - 44px));
+    max-height: min(78vh, 560px);
   }
 
   .hero-topline,

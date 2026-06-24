@@ -30,7 +30,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%F0%9F%AA%BF%3C/text%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="./styles.css?v=1782271906" />
+    <link rel="stylesheet" href="./styles.css?v=1782283452" />
   </head>
   <body>
     <div class="noise"></div>
@@ -133,19 +133,22 @@
             <span id="current-base-label">当前底盘</span>
             <span id="current-base-subtitle">只保留与你本轮决策最相关的信息</span>
           </div>
+          <button id="status-collapse-button" class="status-collapse-button" type="button" aria-expanded="true" aria-controls="status-content">收起</button>
 
-          <div id="profile-text" class="profile-text"></div>
-          <div id="profile-badges" class="profile-badges"></div>
-          <div id="focus-stats" class="focus-stats"></div>
+          <div id="status-content" class="status-content">
+            <div id="profile-text" class="profile-text"></div>
+            <div id="profile-badges" class="profile-badges"></div>
+            <div id="focus-stats" class="focus-stats"></div>
 
-          <div class="meter-group compact-meters">
-            <div>
-              <label id="career-progress-label" for="progress-career">事业推进</label>
-              <progress id="progress-career" max="100" value="0"></progress>
-            </div>
-            <div>
-              <label id="life-progress-label" for="progress-life">人生满足</label>
-              <progress id="progress-life" max="100" value="0"></progress>
+            <div class="meter-group compact-meters">
+              <div>
+                <label id="career-progress-label" for="progress-career">事业推进</label>
+                <progress id="progress-career" max="100" value="0"></progress>
+              </div>
+              <div>
+                <label id="life-progress-label" for="progress-life">人生满足</label>
+                <progress id="progress-life" max="100" value="0"></progress>
+              </div>
             </div>
           </div>
         </aside>
@@ -236,6 +239,6 @@
       </div>
     </div>
 
-    <script src="./game.js?v=1782271906"></script>
+    <script src="./game.js?v=1782283452"></script>
   </body>
 </html>

@@ -705,6 +705,7 @@ const elements = {
   inlineIdentityPreviewLabel: document.querySelector("#inline-identity-preview-label"),
   currentBaseLabel: document.querySelector("#current-base-label"),
   currentBaseSubtitle: document.querySelector("#current-base-subtitle"),
+  statusCollapseButton: document.querySelector("#status-collapse-button"),
   careerProgressLabel: document.querySelector("#career-progress-label"),
   lifeProgressLabel: document.querySelector("#life-progress-label"),
   summaryIdentityEffects: document.querySelector("#summary-identity-effects"),
@@ -768,6 +769,7 @@ const uiState = {
   actionStep: "choose",
   setupMode: "auto",
   draftActionKey: DEFAULT_ACTION,
+  statusCollapsed: true,
 };
 
 let appLanguage = getInitialLanguage();
@@ -1747,6 +1749,18 @@ function renderModalVisibility() {
   elements.actionModal.setAttribute("aria-hidden", String(!uiState.actionModalOpen));
 }
 
+function renderStatusCollapse() {
+  const collapseText = appLanguage === "en" ? "Collapse" : appLanguage === "zh-TW" ? "收起" : "收起";
+  const expandText = appLanguage === "en" ? "Status" : appLanguage === "zh-TW" ? "狀態" : "状态";
+  const needsAttention = state.money < getMonthlyLivingCost() || state.health < 40 || state.mood < 40 || state.energy < 35 || state.stress > 70 || getLifeScore() < 42;
+  const attentionLabel = appLanguage === "en" ? "needs attention" : appLanguage === "zh-TW" ? "有指標需要關注" : "有指标需要关注";
+  elements.body.classList.toggle("status-collapsed", uiState.statusCollapsed);
+  elements.body.classList.toggle("status-needs-attention", needsAttention);
+  elements.statusCollapseButton.textContent = uiState.statusCollapsed ? expandText : collapseText;
+  elements.statusCollapseButton.setAttribute("aria-expanded", String(!uiState.statusCollapsed));
+  elements.statusCollapseButton.setAttribute("aria-label", needsAttention ? `${elements.statusCollapseButton.textContent}，${attentionLabel}` : elements.statusCollapseButton.textContent);
+}
+
 function renderFocusedChoiceMode(setupVisible) {
   const inSetupChoice = setupVisible && (uiState.identityStep === "gender" || uiState.identityStep === "environment");
   const inActionChoice = !setupVisible && !state.ended && uiState.actionStep === "choose";
@@ -1802,6 +1816,7 @@ function renderStatus() {
   renderIdentityModal();
   renderActionModal();
   renderInlineActionChooser();
+  renderStatusCollapse();
   renderModalVisibility();
 }
 
@@ -2009,6 +2024,10 @@ elements.restartButton.addEventListener("click", restartGame);
 elements.languageSwitcher.addEventListener("change", (event) => {
   const nextLanguage = event.target.value;
   setLanguage(nextLanguage);
+});
+elements.statusCollapseButton.addEventListener("click", () => {
+  uiState.statusCollapsed = !uiState.statusCollapsed;
+  renderStatusCollapse();
 });
 elements.openIdentityModalButton.addEventListener("click", showSetupScreen);
 elements.openActionModalButton.addEventListener("click", () => {
