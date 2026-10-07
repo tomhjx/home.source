@@ -1,0 +1,46 @@
++++
+title = "ads.txt Checker"
+description = "Check ads.txt syntax, seller records, declarations, and duplicate entries."
+date = 2026-10-07T00:00:00+08:00
++++
+
+<div id="ads-checker">
+    <p class="lead">Inspect your authorized digital seller declarations.</p>
+    <p>Need to verify account declarations against a seller list? Use the <a href="/network/sellers-json-checker/">sellers.json Checker with ads.txt joint validation</a>.</p>
+    <form id="ads-fetch-form" class="mb-4">
+        <label for="ads-domain">Website domain or ads.txt URL</label>
+        <div class="input-group">
+            <input id="ads-domain" class="form-control" type="text" placeholder="example.com" required aria-describedby="ads-fetch-help">
+            <div class="input-group-append"><button id="ads-fetch" class="btn btn-outline-primary" type="submit">Fetch and check</button></div>
+        </div>
+        <p id="ads-fetch-help" class="small mt-2">Fetches /ads.txt over HTTPS on the exact host you enter. Use the root domain unless checking a declared subdomain. The target must allow browser access (CORS). No proxy is used.</p>
+        <a id="ads-open" target="_blank" rel="noopener noreferrer" hidden>Open ads.txt in a new tab</a>
+    </form>
+    <label for="ads-text">ads.txt content</label>
+    <textarea id="ads-text" class="form-control text-monospace" rows="10" spellcheck="false" placeholder="example.com, publisher-id, DIRECT"></textarea>
+    <div class="my-3">
+        <button id="ads-check" class="btn btn-primary" type="button">Check content</button>
+        <button id="ads-clear" class="btn btn-outline-secondary ml-2" type="button">Clear</button>
+    </div>
+    <label for="ads-file">Or choose a local text file (up to 1 MiB)</label>
+    <input id="ads-file" class="form-control-file mb-3" type="file" accept=".txt,text/plain">
+    <p id="ads-status" role="status" aria-live="polite">Paste content, select a file, or fetch a domain to begin. Local content stays in your browser.</p>
+    <section id="ads-results" class="border rounded p-3 mt-3" aria-labelledby="ads-heading" hidden>
+        <h2 id="ads-heading" class="h4">Check results</h2>
+        <p id="ads-summary" class="font-weight-bold"></p>
+        <p id="ads-counts"></p>
+        <div class="table-responsive">
+            <table class="table table-sm"><caption>Findings (up to 500 shown)</caption><thead><tr><th scope="col">Line</th><th scope="col">Level</th><th scope="col">Finding</th></tr></thead><tbody id="ads-findings"></tbody></table>
+        </div>
+    </section>
+    <details class="mt-4">
+        <summary>What this checker verifies</summary>
+        <p class="mt-3">Checks the three required seller fields, optional certification ID, DIRECT / RESELLER relationships, comments, duplicate records, and ads.txt 1.1 declarations. Semicolon extension data is recognized but not validated. A certification ID is optional and is not required to be a specific length.</p>
+        <p>This is a syntax check, not an authorization or compliance certification. It does not verify DNS, public suffix boundaries, seller account ownership, sellers.json, certification IDs, country-code assignment, referred files, or redirect-chain compliance. HTTP metadata is checked only for fetched files. Empty files are not treated as proof that no sellers are authorized.</p>
+        <p>If fetching fails, open the file in a new tab and paste its contents here. A browser network or CORS error does not prove that ads.txt is missing.</p>
+        <a href="https://iabtechlab.com/ads-txt/" target="_blank" rel="noopener noreferrer">IAB Tech Lab ads.txt specification</a>
+    </details>
+    <noscript><p class="alert alert-warning">Enable JavaScript to use this checker.</p></noscript>
+</div>
+<script src="/js/ads-txt.js" defer></script>
+<script src="/js/ads-txt-checker.js" defer></script>

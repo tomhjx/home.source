@@ -1,0 +1,44 @@
++++
+title = "sellers.json Checker"
+description = "Validate sellers.json and cross-check seller accounts against ads.txt."
+date = 2026-10-07T00:01:00+08:00
++++
+
+<div id="sellers-checker">
+    <p class="lead">Check seller identities and compare them with ads.txt declarations.</p>
+    <label for="sellers-domain">Advertising system domain or sellers.json URL</label>
+    <input id="sellers-domain" class="form-control mb-2" placeholder="exchange.example.com" aria-describedby="sellers-domain-help">
+    <p id="sellers-domain-help" class="small">Required for joint checks. Enter the advertising system from the first ads.txt field, not the publisher's domain. You are responsible for supplying that system's sellers.json.</p>
+    <button id="sellers-fetch" class="btn btn-outline-primary mb-2" type="button">Fetch sellers.json</button>
+    <a id="sellers-open" class="ml-2" target="_blank" rel="noopener noreferrer" hidden>Open sellers.json</a>
+    <p class="small">Fetch uses HTTPS and requires the target to allow CORS. If blocked, open the file and paste it or choose a local file. No proxy is used. Limit: 20 MiB and 20 seconds.</p>
+    <label for="sellers-text">sellers.json content</label>
+    <textarea id="sellers-text" class="form-control text-monospace mb-2" rows="10" spellcheck="false" placeholder='{"version":"1.0","sellers":[]}'></textarea>
+    <label for="sellers-file">Choose a sellers.json file (up to 20 MiB)</label>
+    <input id="sellers-file" class="form-control-file mb-4" type="file" accept=".json,application/json">
+    <label for="sellers-ads">ads.txt content for joint validation</label>
+    <textarea id="sellers-ads" class="form-control text-monospace mb-2" rows="6" spellcheck="false" placeholder="exchange.example.com, seller-id, DIRECT"></textarea>
+    <label for="sellers-ads-file">Choose an ads.txt file (up to 1 MiB)</label>
+    <input id="sellers-ads-file" class="form-control-file mb-3" type="file" accept=".txt,text/plain">
+    <div class="d-flex flex-wrap">
+        <button id="sellers-check" class="btn btn-outline-primary mr-2 mb-2" type="button">Check sellers.json</button>
+        <button id="sellers-joint" class="btn btn-primary mr-2 mb-2" type="button">Check with ads.txt</button>
+        <button id="sellers-clear" class="btn btn-outline-secondary mb-2" type="button">Clear</button>
+    </div>
+    <p id="sellers-status" role="status" aria-live="polite">Paste or load your files. Local content stays in your browser.</p>
+    <section id="sellers-results" class="border rounded p-3" aria-labelledby="sellers-heading" hidden>
+        <h2 id="sellers-heading" class="h4">Validation results</h2>
+        <p id="sellers-summary" class="font-weight-bold"></p><p id="sellers-counts"></p>
+        <div class="table-responsive"><table class="table table-sm"><caption>Findings (up to 500 shown; array indexes start at 0)</caption><thead><tr><th scope="col">Location</th><th scope="col">Level</th><th scope="col">Finding</th></tr></thead><tbody id="sellers-findings"></tbody></table></div>
+    </section>
+    <details class="mt-4"><summary>Scope and interpretation</summary>
+        <p class="mt-3">Validates sellers.json 1.0 fields, seller types, confidentiality flags, duplicate seller IDs, and domain syntax. Confidential sellers may omit name and domain. Missing domains for other sellers are flagged for review because sellers without a web presence may omit them.</p>
+        <p>Joint checks compare exact, case-sensitive account IDs only for the selected advertising system. DIRECT usually corresponds to PUBLISHER or BOTH; RESELLER usually corresponds to INTERMEDIARY or BOTH. Differences are review warnings. For DIRECT records, an explicit OWNERDOMAIN is compared with the published seller domain. Other advertising systems and referred ads.txt files are not checked.</p>
+        <p>This checks supplied declarations, not real authorization or payment relationships. File provenance, public suffix boundaries, DNS, redirect chains, JSON duplicate property names, extension semantics, and the full SupplyChain object are not verified. Unlisted sellers are reported as absent from the supplied file, not globally unauthorized.</p>
+        <a href="https://iabtechlab.com/sellers-json/" target="_blank" rel="noopener noreferrer">IAB Tech Lab specification</a> · <a href="/network/ads-txt-checker/">ads.txt Checker</a>
+    </details>
+    <noscript><p class="alert alert-warning">Enable JavaScript to use this checker.</p></noscript>
+</div>
+<script src="/js/ads-txt.js" defer></script>
+<script src="/js/sellers-json.js" defer></script>
+<script src="/js/sellers-json-checker.js" defer></script>
