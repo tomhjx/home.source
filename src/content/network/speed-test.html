@@ -1,0 +1,39 @@
++++
+title = "Network Speed Test"
+description = "Test your download and upload speeds, HTTP latency, and jitter online."
++++
+
+<div id="speed-test" class="container-fluid px-0">
+    <p class="lead">Find out how fast your internet connection is.</p>
+    <p>Test provider: Cloudflare. The test connects to this third-party service only after you click Start test, and the provider can see your IP address. Each test downloads about 20 MB and uploads about 5 MB, plus a small amount of protocol overhead. Tests run for up to 90 seconds and can be stopped at any time.</p>
+    <div class="row">
+        <div class="col-6 col-lg-3 mb-3"><div class="speed-metric"><h2>Download</h2><div><strong id="speed-download">—</strong> <span>Mbps</span></div></div></div>
+        <div class="col-6 col-lg-3 mb-3"><div class="speed-metric"><h2>Upload</h2><div><strong id="speed-upload">—</strong> <span>Mbps</span></div></div></div>
+        <div class="col-6 col-lg-3 mb-3"><div class="speed-metric"><h2>HTTP latency</h2><div><strong id="speed-latency">—</strong> <span>ms</span></div></div></div>
+        <div class="col-6 col-lg-3 mb-3"><div class="speed-metric"><h2>Jitter</h2><div><strong id="speed-jitter">—</strong> <span>ms</span></div></div></div>
+    </div>
+    <div class="mb-3">
+        <button id="speed-start" class="btn btn-primary" type="button">Start test</button>
+        <button id="speed-stop" class="btn btn-outline-secondary ml-2" type="button" disabled>Stop</button>
+    </div>
+    <progress id="speed-progress" max="10" value="0" aria-label="Speed test progress" style="width:100%"></progress>
+    <p id="speed-status" role="status" aria-live="polite" class="mt-2">Ready. Click Start test to begin.</p>
+    <details class="mt-4">
+        <summary>Understanding your results</summary>
+        <ul class="mt-3">
+            <li>Mbps means megabits per second. Divide by 8 to convert to MB/s. Download and upload tests transfer fixed amounts of data over a single connection and include request round-trip time.</li>
+            <li>HTTP latency is the average round-trip time of 5 requests after a warm-up request. It includes server processing time and is not ICMP ping. Jitter is the average absolute difference between consecutive latency samples.</li>
+            <li>Results reflect the connection from your browser to Cloudflare and depend on Wi-Fi, proxies, background traffic, and server location. Short samples may underestimate fast connections and do not represent your internet provider's maximum bandwidth.</li>
+            <li>If the connection fails, check your network, proxy, or browser blocking settings and try again. Results from completed stages are kept; unfinished measurements show “—”.</li>
+        </ul>
+    </details>
+    <noscript><p class="alert alert-warning">Enable JavaScript to use the network speed test.</p></noscript>
+</div>
+<style>
+    #speed-test .speed-metric { height: 100%; padding: 1.25rem; border: 1px solid #dce4e8; border-top: 3px solid #30638e; border-radius: .25rem; background: #f6f9fb; color: #233746; }
+    #speed-test .speed-metric h2 { font-size: 1rem; margin-bottom: 1rem; }
+    #speed-test .speed-metric strong { font-size: clamp(1.4rem, 3vw, 2.3rem); font-variant-numeric: tabular-nums; }
+    #speed-test .speed-metric span { font-size: .85rem; }
+    #speed-test summary { cursor: pointer; }
+</style>
+<script src="/js/speed-test.js" defer></script>

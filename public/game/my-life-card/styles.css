@@ -1,0 +1,714 @@
+:root {
+  --bg: #0d0b10;
+  --panel: rgba(24, 22, 31, 0.9);
+  --panel-strong: rgba(36, 33, 46, 0.96);
+  --card: #24202e;
+  --line: rgba(255, 255, 255, 0.13);
+  --line-strong: rgba(255, 198, 102, 0.55);
+  --text: #fff3df;
+  --muted: #b8ad9e;
+  --subtle: #80766e;
+  --accent: #ffc566;
+  --accent-strong: #ffe0a3;
+  --blue: #78c7ff;
+  --green: #8ff0b2;
+  --red: #ff8b78;
+  --violet: #b496ff;
+  --shadow: 0 30px 90px rgba(0, 0, 0, 0.44);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(255, 197, 102, 0.18), transparent 24rem),
+    radial-gradient(circle at 94% 2%, rgba(120, 199, 255, 0.16), transparent 30rem),
+    radial-gradient(circle at 52% 48%, rgba(180, 150, 255, 0.1), transparent 32rem),
+    linear-gradient(180deg, #17131c 0%, #08070b 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.table-glow,
+.arena-runes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.table-glow {
+  opacity: 0.11;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.arena-runes {
+  opacity: 0.18;
+  background:
+    linear-gradient(115deg, transparent 0 46%, rgba(255, 197, 102, 0.22) 46% 47%, transparent 47% 100%),
+    linear-gradient(65deg, transparent 0 53%, rgba(120, 199, 255, 0.16) 53% 54%, transparent 54% 100%);
+}
+
+.game-shell {
+  position: relative;
+  width: min(1320px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 64px;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 48%),
+    linear-gradient(180deg, var(--panel), rgba(13, 12, 18, 0.94));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: stretch;
+  padding: 28px;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: 0.86;
+  letter-spacing: -0.08em;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2.6vw, 2.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+h3 {
+  font-size: 1.45rem;
+}
+
+.lead,
+.scene-text,
+.dialogue-bubble p,
+.log-list,
+#selected-description,
+.life-card .copy,
+.fate-card p {
+  line-height: 1.68;
+}
+
+.lead {
+  max-width: 62rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.hero-side {
+  display: grid;
+  gap: 12px;
+  align-content: stretch;
+}
+
+.round-badge,
+.energy-orb {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.round-badge span,
+.energy-orb span,
+.stat-card span,
+.phase-step small,
+.hand-count {
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.round-badge strong,
+.energy-orb strong {
+  font-size: 1.25rem;
+}
+
+.energy-orb {
+  border-color: rgba(120, 199, 255, 0.34);
+  background: radial-gradient(circle at 12% 0%, rgba(120, 199, 255, 0.18), transparent 8rem), rgba(255, 255, 255, 0.04);
+}
+
+.ghost-button,
+.primary-button {
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, opacity 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.055);
+  padding: 12px 16px;
+}
+
+.primary-button {
+  border: 1px solid var(--line-strong);
+  color: #231709;
+  background: linear-gradient(180deg, #ffe3a8, #ffb443);
+  padding: 13px 18px;
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(255, 180, 67, 0.18);
+}
+
+.ghost-button:hover:not(:disabled),
+.ghost-button:focus-visible:not(:disabled),
+.primary-button:hover:not(:disabled),
+.primary-button:focus-visible:not(:disabled),
+.life-card:hover:not(:disabled),
+.life-card:focus-visible:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  outline: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+}
+
+.stat-card strong {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.55rem;
+}
+
+.phase-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.phase-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  row-gap: 2px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.phase-step span {
+  grid-row: span 2;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-strong);
+  font-weight: 900;
+}
+
+.phase-step.active {
+  border-color: var(--line-strong);
+  background: rgba(255, 197, 102, 0.1);
+}
+
+.phase-step.done span {
+  background: rgba(143, 240, 178, 0.18);
+  color: var(--green);
+}
+
+.arena-layout {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.78fr) minmax(0, 1.44fr) minmax(310px, 0.88fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.fate-panel,
+.battlefield-panel,
+.dialogue-panel,
+.hand-panel,
+.log-panel {
+  padding: 20px;
+}
+
+.section-head {
+  display: flex;
+  gap: 18px;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-head.compact {
+  margin-bottom: 14px;
+}
+
+.scene-text {
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.full-button {
+  width: 100%;
+}
+
+.fate-card {
+  position: relative;
+  min-height: 320px;
+  display: grid;
+  align-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: 20px;
+  border: 1px solid rgba(255, 139, 120, 0.42);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 139, 120, 0.18), transparent 10rem),
+    linear-gradient(155deg, rgba(61, 34, 35, 0.98), rgba(26, 21, 29, 0.98));
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
+}
+
+.fate-card.card-back {
+  border-color: rgba(255, 255, 255, 0.14);
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0 8px, transparent 8px 16px),
+    linear-gradient(155deg, rgba(43, 40, 58, 0.98), rgba(18, 16, 24, 0.98));
+}
+
+.fate-card strong {
+  display: block;
+  font-size: 1.7rem;
+  line-height: 1.08;
+}
+
+.fate-card .type,
+.life-card .type {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: rgba(255, 197, 102, 0.13);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.card-corner,
+.cost-orb {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 999px;
+  color: #1b1207;
+  background: linear-gradient(180deg, var(--accent-strong), #ffaf39);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 1000;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.weakness-list,
+.effect-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.weakness-list span,
+.effect-pill {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+}
+
+.weakness-list span {
+  color: var(--green);
+}
+
+.clash-forecast {
+  max-width: 260px;
+  padding: 10px 12px;
+  border: 1px solid rgba(120, 199, 255, 0.28);
+  border-radius: 14px;
+  color: var(--blue);
+  background: rgba(120, 199, 255, 0.08);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+}
+
+.battlefield {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 270px;
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid rgba(255, 197, 102, 0.25);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 197, 102, 0.12), transparent 14rem),
+    rgba(255, 255, 255, 0.035);
+}
+
+.slot {
+  display: grid;
+  gap: 10px;
+}
+
+.slot-label {
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mini-card {
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--muted);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.mini-card strong {
+  color: var(--text);
+  font-size: 1.25rem;
+}
+
+.fate-mini {
+  border-color: rgba(255, 139, 120, 0.38);
+  background: rgba(255, 139, 120, 0.08);
+}
+
+.player-mini.preview {
+  border-color: rgba(120, 199, 255, 0.38);
+  background: rgba(120, 199, 255, 0.08);
+}
+
+.player-mini.played {
+  border-color: var(--line-strong);
+  background: rgba(255, 197, 102, 0.1);
+}
+
+.clash-mark {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: rgba(255, 197, 102, 0.1);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 1000;
+  letter-spacing: 0.08em;
+}
+
+.selected-panel {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: rgba(255, 197, 102, 0.08);
+}
+
+.hand-panel {
+  margin-top: 16px;
+}
+
+.hand {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.life-card {
+  position: relative;
+  min-height: 300px;
+  display: grid;
+  align-content: space-between;
+  gap: 13px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--text);
+  text-align: left;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.12), transparent 9rem),
+    linear-gradient(155deg, rgba(41, 38, 53, 0.98), rgba(22, 20, 28, 0.98));
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+.life-card.selected {
+  transform: translateY(-12px);
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 2px rgba(255, 197, 102, 0.24), 0 22px 46px rgba(0, 0, 0, 0.42);
+}
+
+.life-card.exhausted {
+  filter: grayscale(0.45);
+}
+
+.cost-orb {
+  left: 14px;
+  right: auto;
+}
+
+.life-card .type {
+  margin-left: 50px;
+}
+
+.life-card .title {
+  font-size: 1.38rem;
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.life-card .copy {
+  color: var(--muted);
+}
+
+.power-line {
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid rgba(120, 199, 255, 0.28);
+  border-radius: 999px;
+  color: var(--blue);
+  background: rgba(120, 199, 255, 0.08);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.effect-pill.positive {
+  color: var(--green);
+}
+
+.effect-pill.negative {
+  color: var(--red);
+}
+
+.dialogue-panel {
+  position: sticky;
+  top: 16px;
+}
+
+.dialogue-list {
+  display: grid;
+  gap: 12px;
+  min-height: 380px;
+  margin-bottom: 14px;
+  align-content: start;
+}
+
+.dialogue-empty {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  padding: 20px;
+  border: 1px dashed var(--line);
+  border-radius: 18px;
+  color: var(--subtle);
+  text-align: center;
+}
+
+.dialogue-bubble {
+  max-width: 94%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.dialogue-bubble.self {
+  justify-self: end;
+  border-color: rgba(120, 199, 255, 0.34);
+  background: rgba(120, 199, 255, 0.09);
+}
+
+.dialogue-bubble.system {
+  border-color: rgba(255, 197, 102, 0.36);
+  background: rgba(255, 197, 102, 0.09);
+}
+
+.dialogue-bubble strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent-strong);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+}
+
+.log-panel {
+  margin-top: 16px;
+}
+
+.log-list {
+  display: grid;
+  gap: 10px;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.log-list li::marker {
+  color: var(--accent);
+}
+
+.ending-card {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: rgba(255, 197, 102, 0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .arena-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .battlefield-panel {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  .dialogue-panel {
+    position: static;
+  }
+
+  .hand {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .hero,
+  .arena-layout,
+  .battlefield,
+  .phase-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .battlefield-panel {
+    grid-column: auto;
+  }
+
+  .status-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .clash-mark {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .hand {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .game-shell {
+    width: min(100% - 20px, 1320px);
+    padding-top: 10px;
+  }
+
+  .hero,
+  .fate-panel,
+  .battlefield-panel,
+  .dialogue-panel,
+  .hand-panel,
+  .log-panel {
+    padding: 16px;
+  }
+
+  .status-grid,
+  .hand {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    display: grid;
+  }
+
+  .life-card {
+    min-height: 240px;
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>人生手牌 - 卡牌对战式模拟人生</title>
+    <meta
+      name="description"
+      content="人生手牌是一款卡牌对战式模拟人生网页游戏。命运每轮亮出事件牌，玩家从手牌选择应对牌，在战场结算人生资源与对话反馈。"
+    />
+    <meta
+      name="keywords"
+      content="人生手牌,卡牌对战,模拟人生,网页游戏,人生模拟器,文字游戏,对话游戏,在线小游戏"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="table-glow" aria-hidden="true"></div>
+    <div class="arena-runes" aria-hidden="true"></div>
+
+    <main class="game-shell">
+      <section class="hero panel">
+        <div>
+          <p class="eyebrow">CARD BATTLE LIFE SIM</p>
+          <h1>人生手牌</h1>
+          <p class="lead">
+            命运像对手一样每轮亮出一张事件牌。你从手牌中选择回应，把牌打到战场中央，和当下处境进行一次 Clash。
+            不是每回合都要赢，但每一次出牌都会改变你的资源、压力和人生走向。
+          </p>
+        </div>
+
+        <div class="hero-side">
+          <div class="round-badge">
+            <span id="round-label">第 1 回合</span>
+            <strong id="age-label">18 岁 · 春</strong>
+          </div>
+          <div class="energy-orb" aria-label="本回合行动力">
+            <span>行动力</span>
+            <strong id="energy-label">3 / 3</strong>
+          </div>
+          <button id="reset-button" class="ghost-button" type="button">重新洗牌开局</button>
+        </div>
+      </section>
+
+      <section class="status-grid" aria-label="角色状态">
+        <article class="stat-card panel"><span>现金</span><strong id="stat-money">0</strong></article>
+        <article class="stat-card panel"><span>健康</span><strong id="stat-health">0</strong></article>
+        <article class="stat-card panel"><span>情绪</span><strong id="stat-mood">0</strong></article>
+        <article class="stat-card panel"><span>能力</span><strong id="stat-skill">0</strong></article>
+        <article class="stat-card panel"><span>关系</span><strong id="stat-relationship">0</strong></article>
+        <article class="stat-card panel"><span>压力</span><strong id="stat-stress">0</strong></article>
+      </section>
+
+      <section class="phase-panel panel" aria-label="回合流程">
+        <div class="phase-step" id="step-reveal"><span>1</span><strong>命运揭示</strong><small>对手亮出本轮事件牌</small></div>
+        <div class="phase-step" id="step-respond"><span>2</span><strong>手牌应对</strong><small>选择并预判一张回应牌</small></div>
+        <div class="phase-step" id="step-clash"><span>3</span><strong>战场结算</strong><small>打出卡牌并生成反馈</small></div>
+        <div class="phase-step" id="step-feedback"><span>4</span><strong>对话反馈</strong><small>逐句读完人生回声</small></div>
+      </section>
+
+      <section class="arena-layout">
+        <aside class="panel fate-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">命运对手</p>
+              <h2>本轮意图</h2>
+            </div>
+          </div>
+          <article id="fate-card" class="fate-card card-back">
+            <span class="card-corner">?</span>
+            <strong>尚未揭示</strong>
+            <p>点击开始回合，命运会翻开一张事件牌。</p>
+          </article>
+          <button id="reveal-button" class="primary-button full-button" type="button">开始回合 · 揭示命运</button>
+        </aside>
+
+        <section class="panel battlefield-panel" aria-label="战场">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" id="phase-kicker">等待命运揭示</p>
+              <h2 id="scene-title">牌桌中央还是空的。</h2>
+            </div>
+            <div id="clash-forecast" class="clash-forecast">选择手牌后显示胜负预估</div>
+          </div>
+
+          <p id="scene-text" class="scene-text">
+            卡牌对战式人生模拟：上方是命运事件，下方是你的手牌，中央战场会显示你如何回应本轮处境。
+          </p>
+
+          <div class="battlefield">
+            <div class="slot fate-slot">
+              <span class="slot-label">命运</span>
+              <div id="fate-slot-card" class="mini-card empty-slot">等待揭示</div>
+            </div>
+            <div class="clash-mark">VS</div>
+            <div class="slot player-slot">
+              <span class="slot-label">你</span>
+              <div id="player-slot-card" class="mini-card empty-slot">等待出牌</div>
+            </div>
+          </div>
+
+          <div id="selected-card-panel" class="selected-panel hidden">
+            <p class="eyebrow">当前预判</p>
+            <h3 id="selected-title"></h3>
+            <p id="selected-description"></p>
+            <div id="selected-effects" class="effect-list"></div>
+            <button id="play-button" class="primary-button" type="button">打到战场 · 结算 Clash</button>
+          </div>
+        </section>
+
+        <aside class="panel dialogue-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">战后反馈</p>
+              <h2>回声室</h2>
+            </div>
+          </div>
+          <div id="dialogue-list" class="dialogue-list" aria-live="polite"></div>
+          <button id="dialogue-button" class="ghost-button full-button" type="button" disabled>等待结算</button>
+        </aside>
+      </section>
+
+      <section class="panel hand-panel" aria-label="玩家手牌">
+        <div class="section-head compact">
+          <div>
+            <p class="eyebrow">玩家手牌</p>
+            <h2>选择你的回应</h2>
+          </div>
+          <span id="hand-count" class="hand-count">0 张可用</span>
+        </div>
+        <div id="hand" class="hand" aria-live="polite"></div>
+      </section>
+
+      <section class="panel log-panel">
+        <div class="section-head compact">
+          <div>
+            <p class="eyebrow">战局记录</p>
+            <h2>已结算的回合</h2>
+          </div>
+        </div>
+        <ol id="log-list" class="log-list"></ol>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
