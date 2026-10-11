@@ -1,0 +1,47 @@
++++
+title = "Color Palette Picker"
+description = "Pick colors, copy HEX, RGB and HSL values, and explore matching palettes."
++++
+
+<div id="color-picker" class="container-fluid px-0">
+    <p>Choose a color or enter a HEX value to explore matching colors.</p>
+    <div class="row">
+        <div class="col-sm-4 mb-3">
+            <label for="color-input">Color</label>
+            <input id="color-input" type="color" class="form-control" value="#30638e" style="height:4rem">
+        </div>
+        <div class="col-sm-8 mb-3">
+            <label for="color-hex">HEX input</label>
+            <input id="color-hex" class="form-control" value="#30638E" spellcheck="false" autocomplete="off" aria-describedby="color-help">
+            <small id="color-help" class="text-muted">Accepts 3 or 6 hexadecimal digits, with or without #.</small>
+        </div>
+    </div>
+    <div id="color-preview" class="rounded border mb-3" style="height:8rem;background:#30638e" role="img" aria-label="Selected color #30638E"></div>
+    <div id="color-values" class="mb-3">
+        <div class="input-group mb-2"><span class="input-group-text">HEX</span><input id="color-hex-output" class="form-control" readonly aria-label="HEX value"><button type="button" class="btn btn-outline-primary" data-copy="color-hex-output">Copy HEX</button></div>
+        <div class="input-group mb-2"><span class="input-group-text">RGB</span><input id="color-rgb-output" class="form-control" readonly aria-label="RGB value"><button type="button" class="btn btn-outline-primary" data-copy="color-rgb-output">Copy RGB</button></div>
+        <div class="input-group mb-2"><span class="input-group-text">HSL</span><input id="color-hsl-output" class="form-control" readonly aria-label="HSL value"><button type="button" class="btn btn-outline-primary" data-copy="color-hsl-output">Copy HSL</button></div>
+    </div>
+    <button id="color-eyedropper" type="button" class="btn btn-outline-primary mb-2" hidden>Pick from screen</button>
+    <p class="small text-muted">Screen picking is available in supported browsers over HTTPS or localhost. Colors are processed locally.</p>
+    <p id="color-status" role="status" aria-live="polite"></p>
+    <h2 class="h4">Color palette</h2>
+    <p class="small">Select a swatch to use its color.</p>
+    <div id="color-palette" class="color-swatches mb-4"></div>
+    <label for="color-harmony">Matching palette</label>
+    <select id="color-harmony" class="form-control mb-3">
+        <option value="shades">Shades and tints</option>
+        <option value="analogous">Analogous</option>
+        <option value="complementary">Complementary</option>
+        <option value="triadic">Triadic</option>
+    </select>
+    <div id="color-matches" class="color-swatches"></div>
+    <noscript><p class="alert alert-warning">Enable JavaScript to use the color picker.</p></noscript>
+</div>
+<style>
+    #color-picker .color-swatches { display:flex; flex-wrap:wrap; gap:.5rem; }
+    #color-picker .color-swatch { padding:.25rem; border:1px solid #999; border-radius:.25rem; background:#fff; color:#222; min-width:6rem; }
+    #color-picker .color-swatch span { display:block; height:3rem; margin-bottom:.25rem; border-radius:.15rem; }
+    #color-picker .color-swatch:focus-visible { outline:3px solid #30638e; outline-offset:2px; }
+</style>
+<script src="/js/color-picker.js" defer></script>
